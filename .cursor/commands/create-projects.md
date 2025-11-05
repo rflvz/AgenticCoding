@@ -12,6 +12,7 @@ Cuando crees un proyecto, **NO** solo uses el MCP de Linear para crear un proyec
 4. **Organiza jerárquicamente** con epics y sub-issues
 5. **Crea recursos necesarios** (labels, proyectos, etc.) si no existen
 6. **Establece dependencias** y flujo de trabajo
+7. **⚠️ Intuye el proyecto** para issues iniciales si no se especifica - busca proyectos relacionados en Linear
 
 ## Proceso de Creación Profesional de Proyectos
 
@@ -255,6 +256,11 @@ Cuando crees un proyecto, **NO** solo uses el MCP de Linear para crear un proyec
 5. **Labels:** Intuye los labels apropiados basándote en el contenido
 
 6. **Jerarquía:** Si es un sub-issue: usa `parentId` (ID del Epic padre)
+
+7. **Proyecto:**
+   - **⚠️ Si el usuario no especifica el proyecto para los issues iniciales, intuye el proyecto creado**
+   - Todos los issues iniciales deben estar vinculados al proyecto creado
+   - Si hay proyectos relacionados existentes, puedes vincularlos también según el contexto
 
 **Herramienta:** `create_issue`
 
