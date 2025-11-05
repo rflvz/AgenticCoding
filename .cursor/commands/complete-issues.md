@@ -8,38 +8,49 @@ Cuando completes un issue, **NO** solo lo marques como "Done". Actúa como un **
 
 1. **⚠️ SIEMPRE mueve a "In Progress"** al iniciar el trabajo en el issue
 2. **Analiza el issue completamente** antes de empezar
-3. **Aclara dudas** si algo no está claro
-4. **SIEMPRE trabaja con branches y Pull Requests** cuando sea posible (nunca en main/master directamente)
-5. **Implementa la solución completa** con código real
-6. **Verifica que funciona** antes de poner en revisión
-7. **SIEMPRE mueve a "In Review"** después de implementar - NO marques como "Done" sin visto bueno
-8. **NUNCA marques como "Done"** sin aprobación explícita del usuario
-9. **Documenta el trabajo** realizado
+3. **⚠️ Intuye el proyecto** si el issue no tiene proyecto asignado - busca proyectos relacionados en Linear
+4. **Aclara dudas** si algo no está claro
+5. **SIEMPRE trabaja con branches y Pull Requests** cuando sea posible (nunca en main/master directamente)
+6. **Implementa la solución completa** con código real
+7. **Verifica que funciona** antes de poner en revisión
+8. **SIEMPRE mueve a "In Review"** después de implementar - NO marques como "Done" sin visto bueno
+9. **NUNCA marques como "Done"** sin aprobación explícita del usuario
+10. **Documenta el trabajo** realizado
 
 ## Proceso Profesional de Completar Issues
 
-### Paso 1: Análisis Profundo del Issue
+### Paso 1: Análisis Profundo del Issue y Marcar como "In Progress"
 
-**ANTES de empezar a trabajar:**
+**⚠️ REGLA CRÍTICA: NADA MÁS INICIAR EL TRABAJO, mueve el issue a "In Progress":**
 
 1. **Obtener detalles completos del issue**
    - Usa: `get_issue`
    - Parámetros: `id` (ID del issue, ej: "ISSUE-123")
    - Revisa toda la información retornada: título, descripción, estado, asignado, labels, etc.
 
-2. **Analizar el contenido:**
+2. **⚠️ ACTUALIZAR INMEDIATAMENTE A "In Progress":**
+   - Usa: `update_issue` con `id` (ID del issue), `state: "In Progress"`
+   - **Hazlo NADA MÁS empezar a trabajar en el issue**
+   - Esto indica que el trabajo ha comenzado
+
+3. **⚠️ Intuir proyecto si falta:**
+   - Si el issue no tiene proyecto asignado, busca proyectos relacionados usando `list_projects`
+   - Analiza el contexto del issue (título, descripción, labels, equipo) para identificar proyectos relevantes
+   - Si hay un proyecto activo relacionado, actualiza el issue con `update_issue` y parámetro `project`
+
+4. **Analizar el contenido:**
    - ¿Qué requiere exactamente el issue?
    - ¿Hay criterios de aceptación claros?
    - ¿Hay dependencias o sub-issues?
    - ¿Hay referencias a código existente?
    - ¿Hay contexto técnico suficiente?
 
-3. **Aclarar dudas con el usuario si es necesario:**
+5. **Aclarar dudas con el usuario si es necesario:**
    - ¿Hay algún estilo de código específico que deba seguir?
    - ¿Hay algún framework o biblioteca preferida?
    - ¿Requiere tests? ¿Qué nivel de cobertura?
 
-4. **Verificar dependencias:**
+6. **Verificar dependencias:**
    - ¿Hay sub-issues que deben completarse primero?
    - ¿Hay issues padre que dependen de este?
    - ¿Hay issues relacionados que deba considerar?
@@ -321,11 +332,20 @@ Cuando completes un issue, **NO** solo lo marques como "Done". Actúa como un **
 
 ## Checklist de Profesionalismo
 
+### ⚠️ Al Iniciar el Trabajo
+
+**REGLA CRÍTICA: NADA MÁS INICIAR EL TRABAJO, actualiza a "In Progress":**
+
+- [ ] ⚠️ **¿He actualizado el issue a "In Progress"?** (OBLIGATORIO al iniciar)
+- [ ] ¿He analizado completamente el issue?
+- [ ] ¿He creado una rama para el trabajo? (SIEMPRE)
+- [ ] ¿He verificado dependencias?
+
 ### Antes de Marcar como "In Review"
 
 Antes de poner un issue en "In Review", verifica:
 
-- [ ] ¿He creado una rama para el trabajo? (SIEMPRE)
+- [ ] ¿El issue está en "In Progress"? (debe estar desde el inicio)
 - [ ] ¿He implementado el código completamente?
 - [ ] ¿Funciona correctamente?
 - [ ] ¿He creado un Pull Request? (SIEMPRE que sea posible)
@@ -346,11 +366,12 @@ Antes de poner un issue en "In Review", verifica:
 
 ## Consejos Finales
 
-1. **⚠️ SIEMPRE usa branches y Pull Requests** - Nunca trabajes directamente en main/master
-2. **⚠️ SIEMPRE mueve a "In Review"** - No marques como "Done" sin visto bueno del usuario
-3. **⚠️ NUNCA marques como "Done"** - Solo después de aprobación explícita del usuario
-4. **Crea Pull Requests siempre que sea posible** - Facilita revisión y colaboración
-5. **Aclara dudas antes y durante** - Mejor preguntar que asumir
-6. **Verifica que funciona** - No solo implementes, prueba
-7. **Documenta el trabajo** - Comentarios profesionales en el issue
-8. **SIEMPRE incluye "_Hecho por Cursor_" en comentarios** - Permite tracking y transparencia
+1. **⚠️ SIEMPRE mueve a "In Progress"** - NADA MÁS iniciar el trabajo en el issue
+2. **⚠️ SIEMPRE usa branches y Pull Requests** - Nunca trabajes directamente en main/master
+3. **⚠️ SIEMPRE mueve a "In Review"** - No marques como "Done" sin visto bueno del usuario
+4. **⚠️ NUNCA marques como "Done"** - Solo después de aprobación explícita del usuario
+5. **Crea Pull Requests siempre que sea posible** - Facilita revisión y colaboración
+6. **Aclara dudas antes y durante** - Mejor preguntar que asumir
+7. **Verifica que funciona** - No solo implementes, prueba
+8. **Documenta el trabajo** - Comentarios profesionales en el issue
+9. **SIEMPRE incluye "_Hecho por Cursor_" en comentarios** - Permite tracking y transparencia
