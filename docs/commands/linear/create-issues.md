@@ -2,6 +2,8 @@
 
 Guía profesional para crear issues en Linear actuando como un project manager/programador experto.
 
+> **⚠️ IMPORTANTE:** Antes de usar este comando, lee el [documento de contexto del proyecto](../../project-context.md) para obtener información actualizada sobre el proyecto y trabajo en Linear. Este documento es la fuente única de verdad para contexto del proyecto. Si el documento no existe, usa el [comando de inicialización](./initialize-project-context.md) para crearlo.
+
 ## Filosofía: Actuar como Experto
 
 Cuando crees issues, **NO** solo uses el MCP de Linear. Actúa como un **project manager profesional** que:

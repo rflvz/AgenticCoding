@@ -2,6 +2,8 @@
 
 Guía profesional para completar issues en Linear actuando como un programador/project manager experto. **NO solo marques el issue como "Done"**. Completa el trabajo de manera profesional, implementando la solución completa, trabajando con GitHub, poniéndolo en "In Review" para revisión, y verificando que todo esté correcto antes de marcar como "Done".
 
+> **⚠️ IMPORTANTE:** Antes de usar este comando, lee el [documento de contexto del proyecto](../../project-context.md) para obtener información actualizada sobre el proyecto y trabajo en Linear. Este documento es la fuente única de verdad para contexto del proyecto. Si el documento no existe, usa el [comando de inicialización](./initialize-project-context.md) para crearlo.
+
 ## Filosofía: Completar Profesionalmente
 
 Cuando completes un issue, **NO** solo lo marques como "Done". Actúa como un **programador profesional** que:

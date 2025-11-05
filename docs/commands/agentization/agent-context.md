@@ -2,6 +2,8 @@
 
 Comandos para contextualizar agentes (chats) con información específica, compatible con los comandos de Linear.
 
+> **⚠️ IMPORTANTE:** Antes de contextualizar un agente, lee el [documento de contexto del proyecto](../../project-context.md) para obtener información actualizada sobre el proyecto y trabajo en Linear. Este documento es la fuente única de verdad para contexto del proyecto. Si el documento no existe, usa el [comando de inicialización](../linear/initialize-project-context.md) para crearlo.
+
 ## Contextualizar Agente con Rol
 
 ### Agente Especializado en Linear
