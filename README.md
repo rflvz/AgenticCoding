@@ -6,9 +6,15 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 >
 > **IMPORTANTE:** Esta guía contiene tanto comandos **FUNCIONALES** (completamente funcionales y probados) como comandos **EXPERIMENTALES** (en desarrollo). Siempre usa primero los comandos FUNCIONALES.
 >
-> **✅ Comandos FUNCIONALES:** Ubicados en `.cursor/commands/` - Completamente funcionales y probados
+> **✅ Comandos FUNCIONALES:** 
+> - Ubicados en `.cursor/commands/` - Comandos funcionales en general
+> - Ubicados en `docs/commands/linear/` - Comandos funcionales de Linear
+> - Completamente funcionales y probados
 >
-> **⚠️ Comandos EXPERIMENTALES:** Ubicados en `docs/commands/` - En desarrollo, no confiar ciegamente
+> **⚠️ Comandos EXPERIMENTALES:** 
+> - Ubicados en `docs/commands/agentization/` - Comandos experimentales de agentización
+> - Ubicados en `docs/commands/productivity/` - Comandos experimentales de productividad
+> - En desarrollo, no confiar ciegamente
 >
 > **Workflow Principal FUNCIONAL:** `initialize-project-context` → `create-projects` → `create-issues` → `complete-issues` → `review-issues`
 
@@ -21,9 +27,11 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 
 ### Comandos FUNCIONALES (✅ Completamente Funcionales)
 
-**Ubicación:** `.cursor/commands/`
+**Ubicaciones:** `.cursor/commands/` y `docs/commands/linear/`
 
 #### Linear (FUNCIONALES)
+
+**En `.cursor/commands/` (comandos funcionales en general):**
 - ✅ [Inicializar Contexto del Proyecto](./.cursor/commands/initialize-project-context.md) - Crear documento de contexto centralizado
 - ✅ [Crear Issues](./.cursor/commands/create-issues.md) - Comandos para crear issues en Linear
 - ✅ [Crear Proyectos](./.cursor/commands/create-projects.md) - Comandos para crear proyectos en Linear
@@ -31,15 +39,17 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 - ✅ [Revisar Issues](./.cursor/commands/review-issues.md) - Comandos para revisar issues en estado "In Review"
 - ✅ [Listar y Buscar](./.cursor/commands/list-search.md) - Comandos para listar y buscar issues
 
+**En `docs/commands/linear/` (comandos funcionales de Linear):**
+- ✅ [Inicializar Contexto del Proyecto](./docs/commands/linear/initialize-project-context.md) - Crear documento de contexto centralizado
+- ✅ [Crear Issues](./docs/commands/linear/create-issues.md) - Comandos para crear issues en Linear
+- ✅ [Crear Proyectos](./docs/commands/linear/create-projects.md) - Comandos para crear proyectos en Linear
+- ✅ [Completar Issues](./docs/commands/linear/complete-issues.md) - Comandos para completar y actualizar issues
+- ✅ [Revisar Issues](./docs/commands/linear/review-issues.md) - Comandos para revisar issues en estado "In Review"
+- ✅ [Listar y Buscar](./docs/commands/linear/list-search.md) - Comandos para listar y buscar issues
+
 ### Comandos EXPERIMENTALES (⚠️ En Desarrollo)
 
-**Ubicación:** `docs/commands/`
-
-#### Linear (EXPERIMENTALES)
-- ⚠️ [Inicializar Contexto del Proyecto](./docs/commands/linear/initialize-project-context.md) - Crear documento de contexto centralizado
-- ⚠️ [Crear Issues](./docs/commands/linear/create-issues.md) - Comandos para crear issues en Linear
-- ⚠️ [Completar Issues](./docs/commands/linear/complete-issues.md) - Comandos para completar y actualizar issues
-- ⚠️ [Listar y Buscar](./docs/commands/linear/list-search.md) - Comandos para listar y buscar issues
+**Ubicaciones:** `docs/commands/agentization/` y `docs/commands/productivity/`
 
 #### Agentización (EXPERIMENTALES)
 - ⚠️ [Agente Orquestador](./docs/commands/agentization/agent-orchestrator.md) - Agente especializado en project management
@@ -101,30 +111,35 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 1. **Inicializar Contexto del Proyecto**
    ```bash
    # Usa: .cursor/commands/initialize-project-context.md
+   # O: docs/commands/linear/initialize-project-context.md
    # Crea el documento de contexto centralizado del proyecto
    ```
 
 2. **Crear Proyecto en Linear**
    ```bash
    # Usa: .cursor/commands/create-projects.md
+   # O: docs/commands/linear/create-projects.md
    # Crea un nuevo proyecto con issues iniciales
    ```
 
 3. **Crear Issues en Linear**
    ```bash
    # Usa: .cursor/commands/create-issues.md
+   # O: docs/commands/linear/create-issues.md
    # Crea issues profesionalmente con toda la información necesaria
    ```
 
 4. **Completar Issues**
    ```bash
    # Usa: .cursor/commands/complete-issues.md
+   # O: docs/commands/linear/complete-issues.md
    # Implementa código y mueve issues a "In Review"
    ```
 
 5. **Revisar Issues**
    ```bash
    # Usa: .cursor/commands/review-issues.md
+   # O: docs/commands/linear/review-issues.md
    # Revisa issues en "In Review" y aprueba o solicita cambios
    ```
 
