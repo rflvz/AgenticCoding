@@ -222,6 +222,190 @@ Ejemplos:
 - `Normal`: Trabajo regular (default)
 - `Low`: Mejoras menores, optimizaciones opcionales
 
+### Paso 6: Gestionar Status en Trabajo Paralelo
+
+**Status disponibles en Linear para AgentiCoding:**
+
+- `Backlog`: Tareas pendientes de planificación
+- `Todo`: Tareas listas para comenzar
+- `In Progress`: Tareas en desarrollo activo
+- `In Review`: Tareas completadas esperando revisión
+- `Done`: Tareas completadas y aprobadas
+- `Canceled`: Tareas canceladas
+- `Duplicate`: Issues duplicados
+
+#### Status por Fase de Trabajo Paralelo
+
+Cuando múltiples agentes trabajan en paralelo en AgentiCoding, cada issue debe tener el status apropiado según su fase:
+
+**Fase 1: Planificación y Diseño**
+
+```
+Epic Padre (Agente Orquestador):
+- Status: "Todo" o "Backlog" (si no está listo para comenzar)
+- Descripción: Define la visión general y divide en sub-tareas
+
+Sub-issues de Diseño (Agentes Especializados):
+- Status: "Todo" (al crear)
+- Status: "In Progress" (cuando el agente comienza a trabajar)
+- Status: "In Review" (cuando el diseño está completo, esperando aprobación)
+- Status: "Done" (cuando el diseño está aprobado)
+```
+
+**Fase 2: Desarrollo**
+
+```
+Issues de Implementación (Agentes Especializados):
+- Status: "Todo" (al crear, si depende de diseño)
+- Status: "In Progress" (cuando el agente comienza a implementar)
+- Status: "In Review" (cuando la implementación está completa)
+- Status: "Done" (cuando pasa code review)
+
+Issues que pueden ejecutarse en paralelo:
+- Frontend: "In Progress" (mientras Backend también está "In Progress")
+- Backend: "In Progress" (mientras Frontend también está "In Progress")
+- Ambos pueden estar "In Progress" simultáneamente
+```
+
+**Fase 3: Testing**
+
+```
+Issues de Testing (Agente Testing):
+- Status: "Todo" (al crear, esperando que dependencias estén "Done")
+- Status: "In Progress" (cuando comienza a escribir tests)
+- Status: "In Review" (cuando tests están completos, esperando verificación)
+- Status: "Done" (cuando todos los tests pasan)
+
+Nota: Solo puede comenzar cuando ISSUE-126, ISSUE-127, ISSUE-128 están "Done"
+```
+
+**Fase 4: Code Review**
+
+```
+Issues en Revisión (Agente Code Review):
+- Status: "In Review" (cuando el código está listo para revisar)
+- Status: "Done" (si aprueba sin cambios)
+- Status: "In Progress" (si requiere cambios, reasignar al agente original)
+```
+
+**Fase 5: Documentación**
+
+```
+Issues de Documentación (Agente Documentation):
+- Status: "Todo" (al crear, esperando que implementación esté "Done")
+- Status: "In Progress" (cuando comienza a documentar)
+- Status: "In Review" (cuando documentación está completa)
+- Status: "Done" (cuando documentación está aprobada)
+```
+
+**Fase 6: Deployment**
+
+```
+Issues de Deployment (Agente DevOps):
+- Status: "Todo" (al crear, esperando que todo esté "Done")
+- Status: "In Progress" (durante deployment)
+- Status: "In Review" (verificando que deployment sea exitoso)
+- Status: "Done" (cuando deployment está completo y verificado)
+```
+
+#### Reglas de Status en Trabajo Paralelo
+
+**1. Dependencias y Status:**
+
+- Issues que **dependen** de otros deben estar en `Todo` hasta que las dependencias estén `Done`
+- Issues que **bloquean** a otros deben tener prioridad alta y estar `In Progress` rápidamente
+- Issues que pueden ejecutarse **en paralelo** pueden estar `In Progress` simultáneamente
+
+**2. Transiciones de Status:**
+
+```
+Backlog → Todo → In Progress → In Review → Done
+                                     ↓
+                                (si requiere cambios)
+                                     ↓
+                              In Progress (nuevamente)
+```
+
+**3. Status en Creación de Issues:**
+
+Al crear issues, usa el parámetro `state` según el contexto:
+
+- **Si no hay dependencias**: `state: "Todo"` (listo para comenzar)
+- **Si hay dependencias**: `state: "Todo"` (pero documenta las dependencias en la descripción)
+- **Si es un Epic padre**: `state: "Backlog"` o `state: "Todo"` según planificación
+- **Si es un sub-issue que puede comenzar inmediatamente**: `state: "Todo"`
+
+**4. Actualización de Status Durante Desarrollo:**
+
+Durante el desarrollo paralelo, los agentes deben actualizar el status usando `update_issue`:
+
+- **Al comenzar trabajo**: Actualizar a `In Progress`
+- **Al completar trabajo**: Actualizar a `In Review`
+- **Al aprobar**: Actualizar a `Done`
+- **Si requiere cambios**: Actualizar a `In Progress` y reasignar
+
+#### Ejemplo: Status en Feature Completa
+
+```
+Epic: Sistema de Autenticación
+Status: "Todo"
+
+├─ ISSUE-123: Diseño arquitectónico
+│  Status: "Todo" → "In Progress" → "In Review" → "Done"
+│
+├─ ISSUE-124: Diseño UI (depende de ISSUE-123)
+│  Status: "Todo" (esperando ISSUE-123 "Done") → "In Progress" → "Done"
+│
+├─ ISSUE-125: Diseño API (depende de ISSUE-123)
+│  Status: "Todo" (esperando ISSUE-123 "Done") → "In Progress" → "Done"
+│
+├─ ISSUE-126: UI de login (depende de ISSUE-124)
+│  Status: "Todo" → "In Progress" (paralelo con ISSUE-127) → "In Review" → "Done"
+│
+├─ ISSUE-127: API de autenticación (depende de ISSUE-125)
+│  Status: "Todo" → "In Progress" (paralelo con ISSUE-126) → "In Review" → "Done"
+│
+├─ ISSUE-128: Integración (depende de ISSUE-126 y ISSUE-127)
+│  Status: "Todo" (esperando ambos "Done") → "In Progress" → "In Review" → "Done"
+│
+├─ ISSUE-129: Tests (depende de ISSUE-128)
+│  Status: "Todo" → "In Progress" → "In Review" → "Done"
+│
+└─ ISSUE-130: Documentación (depende de ISSUE-128)
+   Status: "Todo" → "In Progress" → "In Review" → "Done"
+```
+
+#### Herramientas para Gestionar Status
+
+**Actualizar Status:**
+
+Usa `update_issue` con el parámetro `state`:
+
+```
+update_issue(
+  id: "ISSUE-123",
+  state: "In Progress"  // o "In Review", "Done", etc.
+)
+```
+
+**Listar Status Disponibles:**
+
+Usa `list_issue_statuses` con el parámetro `team` para ver todos los status disponibles:
+
+```
+list_issue_statuses(team: "DAW")
+// Retorna: Backlog, Todo, In Progress, In Review, Done, Canceled, Duplicate
+```
+
+**Verificar Status de Dependencias:**
+
+Antes de cambiar un issue a `In Progress`, verifica que las dependencias estén `Done`:
+
+```
+list_issues(team: "DAW", parentId: "ISSUE-EPIC-123")
+// Verifica que todos los issues dependientes estén "Done"
+```
+
 ## Ejemplos de Uso Profesional
 
 ### Ejemplo 1: Crear Feature Compleja
@@ -279,7 +463,7 @@ Ejemplos:
 - `project` (opcional): Nombre o ID del proyecto
 - `dueDate` (opcional): Fecha en formato "YYYY-MM-DD"
 - `parentId` (opcional): ID del issue padre para crear sub-issue
-- `state` (opcional): Estado inicial del issue
+- `state` (opcional): Estado inicial del issue. Valores disponibles: `"Backlog"`, `"Todo"`, `"In Progress"`, `"In Review"`, `"Done"`, `"Canceled"`, `"Duplicate"`. **Usa el status apropiado según la fase de trabajo paralelo** (ver Paso 6)
 
 **Importante:** Intuye los labels basándote en:
 - Tipo de tarea (bug, feature, refactor, docs, chore)
@@ -324,12 +508,49 @@ Ejemplos:
 
 **Parámetros útiles:**
 - `team`: Filtrar por equipo
-- `state`: Filtrar por estado
+- `state`: Filtrar por estado (`"Backlog"`, `"Todo"`, `"In Progress"`, `"In Review"`, `"Done"`, etc.)
 - `assignee`: Filtrar por asignado
 - `priority`: Filtrar por prioridad
 - `label`: Filtrar por label
 - `project`: Filtrar por proyecto
 - `parentId`: Filtrar por issue padre (para obtener sub-issues)
+
+### Actualizar Issue
+
+**Herramienta:** `update_issue`
+
+**Parámetros útiles:**
+- `id` (requerido): ID del issue a actualizar
+- `state` (opcional): Nuevo estado del issue (`"Backlog"`, `"Todo"`, `"In Progress"`, `"In Review"`, `"Done"`, etc.)
+- `title` (opcional): Nuevo título
+- `description` (opcional): Nueva descripción
+- `assignee` (opcional): Nuevo asignado
+- `priority` (opcional): Nueva prioridad
+- `labels` (opcional): Nuevos labels
+- `project` (opcional): Nuevo proyecto
+- `dueDate` (opcional): Nueva fecha de vencimiento
+
+**Uso típico para trabajo paralelo:**
+```
+update_issue(id: "ISSUE-123", state: "In Progress")  // Al comenzar trabajo
+update_issue(id: "ISSUE-123", state: "In Review")     // Al completar trabajo
+update_issue(id: "ISSUE-123", state: "Done")          // Al aprobar
+```
+
+### Listar Status Disponibles
+
+**Herramienta:** `list_issue_statuses`
+
+**Parámetros:**
+- `team` (requerido): Nombre o ID del equipo
+
+**Retorna:** Lista de status disponibles para el equipo con sus IDs y nombres
+
+**Uso:**
+```
+list_issue_statuses(team: "DAW")
+// Retorna: Backlog, Todo, In Progress, In Review, Done, Canceled, Duplicate
+```
 
 ## Checklist de Profesionalismo
 
@@ -345,6 +566,8 @@ Antes de crear un issue, verifica:
 - [ ] ¿Está asignado al equipo/persona correcta?
 - [ ] ¿La prioridad es apropiada?
 - [ ] ¿He establecido dependencias correctamente (parentId si aplica)?
+- [ ] ¿He asignado el status apropiado según la fase de trabajo paralelo? (ver Paso 6)
+- [ ] ¿El status es consistente con las dependencias del issue? (si hay dependencias, debe estar en "Todo" hasta que estén "Done")
 
 ## Consejos Finales
 
@@ -354,3 +577,5 @@ Antes de crear un issue, verifica:
 4. **Crea recursos si faltan** - Labels, proyectos, etc.
 5. **Aclara dudas antes de crear** - Mejor preguntar que asumir
 6. **Actúa como experto** - No solo uses el MCP, sé estratégico
+7. **Gestiona status en trabajo paralelo** - Usa el status apropiado según la fase (ver Paso 6) y actualiza el status cuando los agentes comienzan, completan o requieren cambios
+8. **Sincroniza status con dependencias** - Verifica que las dependencias estén "Done" antes de cambiar un issue a "In Progress"
