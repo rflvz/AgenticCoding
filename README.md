@@ -6,17 +6,19 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 >
 > **IMPORTANTE:** Esta guía contiene tanto comandos **FUNCIONALES** (completamente funcionales y probados) como comandos **EXPERIMENTALES** (en desarrollo). Siempre usa primero los comandos FUNCIONALES.
 >
-> **✅ Comandos FUNCIONALES:** 
-> - Ubicados en `.cursor/commands/` - Comandos funcionales en general
-> - Ubicados en `docs/commands/linear/` - Comandos funcionales de Linear
-> - Completamente funcionales y probados
+> **✅ Comandos FUNCIONALES - SOLO COMANDOS DE LINEAR:**
+> - **Los comandos de Linear son los únicos FUNCIONALES** - Completamente funcionales y probados
+> - Ubicados en `.cursor/commands/` - Comandos funcionales de Linear en general
+> - Ubicados en `docs/commands/linear/` - Comandos funcionales de Linear específicos
+> - **Solo estos comandos están completamente funcionales y probados**
 >
-> **⚠️ Comandos EXPERIMENTALES:** 
+> **⚠️ Comandos EXPERIMENTALES - TODOS LOS DEMÁS:**
+> - **Todos los demás comandos son EXPERIMENTALES** - En desarrollo, no confiar ciegamente
 > - Ubicados en `docs/commands/agentization/` - Comandos experimentales de agentización
 > - Ubicados en `docs/commands/productivity/` - Comandos experimentales de productividad
-> - En desarrollo, no confiar ciegamente
+> - **Estos comandos están en desarrollo y no deben usarse sin precaución**
 >
-> **Workflow Principal FUNCIONAL:** `initialize-project-context` → `create-projects` → `create-issues` → `complete-issues` → `review-issues`
+> **Workflow Principal FUNCIONAL (solo comandos de Linear):** `initialize-project-context` → `create-projects` → `create-issues` → `complete-issues` → `review-issues`
 
 ## Índice
 
@@ -27,11 +29,13 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 
 ### Comandos FUNCIONALES (✅ Completamente Funcionales)
 
-**Ubicaciones:** `.cursor/commands/` y `docs/commands/linear/`
+> **⚠️ IMPORTANTE:** **Solo los comandos de Linear son FUNCIONALES.** Todos los demás comandos son EXPERIMENTALES.
 
-#### Linear (FUNCIONALES)
+**Ubicaciones:** `.cursor/commands/` (comandos de Linear) y `docs/commands/linear/` (comandos de Linear)
 
-**En `.cursor/commands/` (comandos funcionales en general):**
+#### Linear (FUNCIONALES - Los únicos comandos funcionales)
+
+**En `.cursor/commands/` (comandos funcionales de Linear):**
 - ✅ [Inicializar Contexto del Proyecto](./.cursor/commands/initialize-project-context.md) - Crear documento de contexto centralizado
 - ✅ [Crear Issues](./.cursor/commands/create-issues.md) - Comandos para crear issues en Linear
 - ✅ [Crear Proyectos](./.cursor/commands/create-projects.md) - Comandos para crear proyectos en Linear
@@ -39,7 +43,7 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 - ✅ [Revisar Issues](./.cursor/commands/review-issues.md) - Comandos para revisar issues en estado "In Review"
 - ✅ [Listar y Buscar](./.cursor/commands/list-search.md) - Comandos para listar y buscar issues
 
-**En `docs/commands/linear/` (comandos funcionales de Linear):**
+**En `docs/commands/linear/` (comandos funcionales de Linear - duplicados):**
 - ✅ [Inicializar Contexto del Proyecto](./docs/commands/linear/initialize-project-context.md) - Crear documento de contexto centralizado
 - ✅ [Crear Issues](./docs/commands/linear/create-issues.md) - Comandos para crear issues en Linear
 - ✅ [Crear Proyectos](./docs/commands/linear/create-projects.md) - Comandos para crear proyectos en Linear
@@ -48,6 +52,8 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 - ✅ [Listar y Buscar](./docs/commands/linear/list-search.md) - Comandos para listar y buscar issues
 
 ### Comandos EXPERIMENTALES (⚠️ En Desarrollo)
+
+> **⚠️ IMPORTANTE:** **Todos los comandos que NO son de Linear son EXPERIMENTALES.** Solo los comandos de Linear son FUNCIONALES.
 
 **Ubicaciones:** `docs/commands/agentization/` y `docs/commands/productivity/`
 
