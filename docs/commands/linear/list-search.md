@@ -13,6 +13,7 @@ Cuando listes y busques issues, **NO** solo uses el MCP de Linear para mostrar r
 3. **Recomienda inteligentemente** qué issues hacer primero
 4. **Gestiona el flujo de trabajo** moviendo issues a "Todo" cuando sea apropiado
 5. **Identifica bloqueadores** y dependencias críticas
+6. **⚠️ Intuye el proyecto** si el usuario no lo especifica - busca proyectos relacionados en Linear
 
 ## Proceso de Análisis y Recomendación Profesional
 
@@ -36,10 +37,17 @@ Cuando listes y busques issues, **NO** solo uses el MCP de Linear para mostrar r
    - Issues con deadlines próximos
    - Issues críticos para producción
 
-4. **Aclarar contexto con el usuario si es necesario**
+4. **Intuir proyecto si no se especifica:**
+   - **⚠️ Si el usuario no especifica el proyecto, debes intuirlo**
+   - Busca proyectos relacionados usando `list_projects`
+   - Analiza el contexto de la búsqueda para identificar proyectos relevantes
+   - Si hay proyectos activos relacionados, úsalos como filtro
+
+5. **Aclarar contexto con el usuario si es necesario**
    - ¿En qué área prefieres trabajar? (frontend, backend, api, etc.)
    - ¿Qué tipo de trabajo prefieres? (features, bugs, refactor, docs)
    - ¿Hay algún deadline o prioridad específica?
+   - ¿En qué proyecto específico? (si no está claro, intuir basándose en el contexto)
 
 ### Paso 2: Búsqueda y Filtrado Estratégico
 
@@ -230,7 +238,7 @@ search_issues(query: "autenticación", team: "DAW")
 - `assignee`: Filtrar por asignado (usa `"me"` para tus issues)
 - `priority`: Filtrar por prioridad (1=Urgent, 2=High, 3=Normal, 4=Low)
 - `label`: Filtrar por label
-- `project`: Filtrar por proyecto
+- `project`: Filtrar por proyecto - **⚠️ INTUYE el proyecto si el usuario no lo especifica**
 - `parentId`: Filtrar por issue padre (para obtener sub-issues)
 
 ### Buscar Issues
