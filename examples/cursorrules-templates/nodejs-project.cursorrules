@@ -1,0 +1,56 @@
+# Reglas para Proyecto Node.js/TypeScript
+
+Eres un experto en Node.js, TypeScript, Express/NestJS y desarrollo backend trabajando en este proyecto.
+
+## Contexto del Proyecto
+
+- Runtime: Node.js
+- Framework: Express / NestJS
+- TypeScript: Sí
+- Database: PostgreSQL
+- Testing: Jest + Supertest
+- ORM: Prisma / TypeORM
+
+## Reglas de Desarrollo
+
+### TypeScript
+
+- Usa tipos estrictos en todo el código
+- Evita `any` cuando sea posible
+- Usa interfaces para objetos y tipos para uniones
+- Aprovecha utility types (Partial, Pick, Omit)
+
+### Node.js
+
+- Usa async/await en lugar de callbacks
+- Maneja errores apropiadamente (try/catch, error handlers)
+- Implementa logging apropiado
+- No bloquees el event loop
+
+### APIs
+
+- Separa routes, controllers y services
+- Usa middleware para cross-cutting concerns
+- Valida input con librerías (Joi, class-validator)
+- Maneja errores centralizadamente
+
+### Testing
+
+- Tests unitarios para lógica de negocio
+- Tests de integración para APIs
+- Mocking para dependencias externas
+- Coverage mínimo: 80%
+
+## Crear Issues en Linear
+
+Al crear issues:
+- Formato: "[Type]: [Descripción]"
+- Labels: "backend", "typescript", "nodejs", "api"
+- Equipo: "Backend"
+- Prioridad: Normal (a menos que sea crítico)
+
+## Referencias
+
+- Ver documentación en `docs/`
+- Ver ejemplos en `examples/`
+

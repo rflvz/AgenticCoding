@@ -1,0 +1,79 @@
+# Atajos de Teclado de Cursor
+
+Atajos de teclado esenciales para trabajar eficientemente con Cursor.
+
+## Atajos de Chat
+
+### Abrir Chat
+
+- `Ctrl+L` (Windows/Linux) / `Cmd+L` (macOS) - Abrir chat rápido
+- `Ctrl+Shift+L` / `Cmd+Shift+L` - Abrir chat en panel lateral
+- `Ctrl+I` / `Cmd+I` - Abrir chat inline
+
+### Cerrar Chat
+
+- `Escape` - Cerrar chat actual
+- `Ctrl+W` / `Cmd+W` - Cerrar panel lateral
+
+## Atajos de Completado de Código
+
+### Aceptar Sugerencias
+
+- `Tab` - Aceptar sugerencia de código
+- `Ctrl+Right` / `Cmd+Right` - Aceptar palabra por palabra
+- `Ctrl+Shift+Right` / `Cmd+Shift+Right` - Aceptar hasta el final de la línea
+
+### Rechazar Sugerencias
+
+- `Escape` - Rechazar sugerencia actual
+- `Ctrl+Shift+Escape` / `Cmd+Shift+Escape` - Rechazar todas las sugerencias
+
+## Navegación
+
+### Comandos Rápidos
+
+- `Ctrl+K` / `Cmd+K` - Comando rápido (palette de comandos)
+- `Ctrl+P` / `Cmd+P` - Búsqueda rápida de archivos
+- `Ctrl+Shift+P` / `Cmd+Shift+P` - Abrir paleta de comandos completa
+
+### Navegación de Archivos
+
+- `Ctrl+B` / `Cmd+B` - Mostrar/ocultar barra lateral
+- `Ctrl+` ` / `Cmd+` ` - Mostrar/ocultar terminal
+- `Ctrl+Shift+E` / `Cmd+Shift+E` - Explorador de archivos
+
+## Edición
+
+### Selección y Edición
+
+- `Ctrl+D` / `Cmd+D` - Seleccionar siguiente ocurrencia
+- `Ctrl+Shift+L` / `Cmd+Shift+L` - Seleccionar todas las ocurrencias
+- `Alt+Click` / `Option+Click` - Cursor múltiple
+- `Ctrl+Alt+Up/Down` / `Cmd+Option+Up/Down` - Cursor arriba/abajo
+
+### Movimiento
+
+- `Ctrl+Left/Right` / `Cmd+Left/Right` - Mover palabra por palabra
+- `Ctrl+Home/End` / `Cmd+Home/End` - Ir al inicio/fin del archivo
+- `Ctrl+G` / `Cmd+G` - Ir a línea específica
+
+## Atajos Específicos de Cursor
+
+### Comandos de IA
+
+- `Ctrl+L` / `Cmd+L` - Abrir chat con IA
+- `Ctrl+K` / `Cmd+K` - Comando rápido con IA
+- `Tab` - Aceptar sugerencia de IA
+
+### Contexto
+
+- `Ctrl+Shift+A` / `Cmd+Shift+A` - Añadir archivo al contexto
+- `Ctrl+Shift+C` / `Cmd+Shift+C` - Añadir selección al contexto
+
+## Consejos
+
+- Usa `Ctrl+K` para acceder rápidamente a comandos
+- `Ctrl+L` es tu atajo principal para el chat
+- `Tab` es esencial para aceptar sugerencias de código
+- Combina atajos para flujos de trabajo más rápidos
+

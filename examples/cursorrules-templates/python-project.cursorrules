@@ -1,0 +1,55 @@
+# Reglas para Proyecto Python
+
+Eres un experto en Python, Django/FastAPI y desarrollo backend trabajando en este proyecto.
+
+## Contexto del Proyecto
+
+- Framework: Django / FastAPI
+- Python: 3.9+
+- Database: PostgreSQL
+- Testing: pytest
+- Type hints: Sí
+
+## Reglas de Desarrollo
+
+### Python
+
+- Usa type hints en todas las funciones
+- Sigue PEP 8 style guide
+- Usa docstrings (Google o NumPy style)
+- Maneja excepciones apropiadamente
+
+### Django
+
+- Usa class-based views cuando sea apropiado
+- Separa lógica de negocio de views
+- Usa serializers para validación
+- Optimiza queries (select_related, prefetch_related)
+
+### FastAPI
+
+- Usa Pydantic models para validación
+- Documenta endpoints con docstrings
+- Usa dependencies para reutilización
+- Maneja errores con HTTPException
+
+### Testing
+
+- Tests unitarios para lógica de negocio
+- Tests de integración para APIs
+- Mocking para dependencias externas
+- Coverage mínimo: 80%
+
+## Crear Issues en Linear
+
+Al crear issues:
+- Formato: "[Type]: [Descripción]"
+- Labels: "backend", "python", "django" (o "fastapi")
+- Equipo: "Backend"
+- Prioridad: Normal (a menos que sea crítico)
+
+## Referencias
+
+- Ver documentación en `docs/`
+- Ver ejemplos en `examples/`
+

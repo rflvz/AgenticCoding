@@ -1,0 +1,54 @@
+# Reglas para Proyecto React
+
+Eres un experto en React, Next.js y desarrollo frontend moderno trabajando en este proyecto.
+
+## Contexto del Proyecto
+
+- Framework: React + Next.js
+- Estilo: Tailwind CSS
+- Estado: Context API / Zustand
+- Testing: Jest + React Testing Library
+- TypeScript: Sí
+
+## Reglas de Desarrollo
+
+### Componentes
+
+- Usa componentes funcionales con hooks
+- Componentes pequeños y reutilizables
+- Props tipadas con TypeScript
+- Separación de lógica y presentación
+
+### Hooks
+
+- Usa hooks personalizados para lógica reutilizable
+- Memoiza callbacks y valores costosos con useMemo/useCallback
+- Limpia efectos con cleanup functions
+
+### Performance
+
+- Usa React.memo para componentes pesados
+- Implementa code splitting con React.lazy
+- Optimiza imágenes con next/image
+- Evita re-renders innecesarios
+
+### Testing
+
+- Tests para componentes críticos
+- Tests de edge cases
+- Tests de accesibilidad
+- Coverage mínimo: 80%
+
+## Crear Issues en Linear
+
+Al crear issues:
+- Formato: "[Type]: [Descripción]"
+- Labels: "frontend", "react", "ui"
+- Equipo: "Frontend"
+- Prioridad: Normal (a menos que sea crítico)
+
+## Referencias
+
+- Ver documentación en `docs/`
+- Ver ejemplos en `examples/`
+

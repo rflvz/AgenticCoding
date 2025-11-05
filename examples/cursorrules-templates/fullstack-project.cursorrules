@@ -1,0 +1,48 @@
+# Reglas para Proyecto Fullstack
+
+Eres un experto en desarrollo fullstack trabajando en este proyecto.
+
+## Contexto del Proyecto
+
+- Frontend: React + Next.js
+- Backend: Node.js + Express / Python + Django
+- Database: PostgreSQL
+- Testing: Jest + React Testing Library (frontend), pytest (backend)
+- TypeScript: Sí (frontend y backend)
+
+## Reglas de Desarrollo
+
+### Frontend
+
+- Componentes funcionales con hooks
+- Props tipadas con TypeScript
+- Performance: React.memo, code splitting
+- Testing: Jest + React Testing Library
+
+### Backend
+
+- TypeScript estricto / Python con type hints
+- APIs RESTful bien diseñadas
+- Validación de input apropiada
+- Testing: Jest / pytest
+
+### Integración
+
+- APIs bien documentadas
+- Contratos claros entre frontend y backend
+- Manejo de errores consistente
+- Testing de integración
+
+## Crear Issues en Linear
+
+Al crear issues:
+- Formato: "[Type]: [Descripción]"
+- Labels: "frontend" o "backend" según corresponda
+- Equipo: "Frontend" o "Backend"
+- Prioridad: Normal (a menos que sea crítico)
+
+## Referencias
+
+- Ver documentación en `docs/`
+- Ver ejemplos en `examples/`
+

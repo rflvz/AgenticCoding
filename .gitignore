@@ -1,0 +1,31 @@
+# Archivos de configuración con tokens
+*.env
+*.env.local
+mcp-config.json
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Archivos temporales
+*.tmp
+*.temp
+.cache/
+
+# Node modules (si se añaden dependencias)
+node_modules/
+package-lock.json
+yarn.lock
+

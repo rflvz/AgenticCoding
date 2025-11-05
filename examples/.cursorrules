@@ -1,0 +1,158 @@
+# Reglas de Cursor para Gestión de Issues con Linear
+
+## Contexto del Proyecto
+
+Este proyecto usa Cursor con MCP de Linear para gestión de issues. Sigue estas reglas al trabajar con Linear.
+
+## Gestión de Issues
+
+### Crear Issues
+
+Cuando se solicite crear un issue:
+1. **Título**: Usa formato `[Type]: [Descripción clara]`
+   - `bug:` para errores
+   - `feature:` para nuevas funcionalidades
+   - `refactor:` para mejoras de código
+   - `docs:` para documentación
+   - `chore:` para tareas de mantenimiento
+
+2. **Descripción**: Incluye:
+   - Contexto técnico detallado
+   - Pasos para reproducir (si es bug)
+   - Comportamiento esperado vs actual
+   - Referencias a código relevante
+
+3. **Asignación**: Asigna al equipo correcto y persona apropiada
+
+4. **Labels**: Usa labels consistentes:
+   - `bug`, `feature`, `refactor`, `docs`, `chore`
+   - `frontend`, `backend`, `api`, `database`
+   - `urgent`, `high-priority`, `low-priority`
+
+5. **Prioridad**: Asigna según severidad:
+   - `Urgent`: Bugs críticos que bloquean producción
+   - `High`: Funcionalidades importantes o bugs significativos
+   - `Normal`: Trabajo regular
+   - `Low`: Mejoras menores o tareas opcionales
+
+### Actualizar Issues
+
+Cuando se actualice un issue:
+1. Añade comentarios explicando cambios
+2. Actualiza el estado apropiadamente
+3. Proporciona contexto técnico en comentarios
+4. Incluye referencias a commits si aplica
+
+### Buscar Issues
+
+Antes de crear un issue nuevo:
+1. Busca issues similares existentes
+2. Actualiza issues existentes si aplica
+3. Evita crear issues duplicados
+
+## Comandos de Linear
+
+### Crear Issue
+
+```
+@linear create issue "Título" --team "Equipo" --description "Descripción" --labels "label1,label2"
+```
+
+### Listar Issues
+
+```
+@linear list issues --assignee "me"
+@linear list issues --team "Equipo" --state "In Progress"
+```
+
+### Actualizar Issue
+
+```
+@linear update issue ISSUE_ID --state "Done"
+@linear update issue ISSUE_ID --description "Nueva descripción"
+```
+
+### Buscar Issues
+
+```
+@linear search issues "término de búsqueda"
+```
+
+## Reglas de Comunicación
+
+### Al Crear Issues desde Errores
+
+1. Analiza el error completo
+2. Identifica la causa raíz
+3. Crea issue con:
+   - Stack trace completo
+   - Contexto del código
+   - Pasos para reproducir
+   - Prioridad apropiada
+
+### Al Actualizar Issues desde Commits
+
+1. Identifica el issue relacionado
+2. Añade comentario con:
+   - Hash del commit
+   - Cambios realizados
+   - Estado actualizado si corresponde
+
+### Al Completar Issues
+
+1. Actualiza estado a "Done"
+2. Añade comentario final explicando:
+   - Cambios completados
+   - Resultado final
+   - Próximos pasos si aplica
+
+## Convenciones
+
+### Naming de Issues
+
+- Títulos en inglés o español según el proyecto
+- Descriptivos y específicos
+- Incluyen el tipo de issue en el título
+
+### Labels
+
+- Usa labels predefinidos del proyecto
+- No crees labels nuevos sin necesidad
+- Combina labels relevantes (máximo 5)
+
+### Estados
+
+- `Backlog`: Issues pendientes de priorizar
+- `Todo`: Issues listos para trabajar
+- `In Progress`: Issues en trabajo activo
+- `In Review`: Issues pendientes de revisión
+- `Done`: Issues completados
+
+## Automatización
+
+### Crear Issue desde Error
+
+Cuando encuentres un error:
+1. Analiza el código y el error
+2. Crea issue automáticamente con:
+   - Título descriptivo del error
+   - Stack trace completo
+   - Contexto del código
+   - Prioridad basada en severidad
+
+### Generar Reportes
+
+Regularmente genera reportes de:
+- Issues completados en el período
+- Issues bloqueados
+- Issues urgentes pendientes
+- Velocidad del equipo
+
+## Mejores Prácticas
+
+1. **Siempre contextualizar**: Proporciona contexto completo en issues
+2. **Mantener actualizado**: Actualiza estados regularmente
+3. **Evitar duplicados**: Busca issues existentes antes de crear
+4. **Documentar cambios**: Añade comentarios explicando actualizaciones
+5. **Seguir convenciones**: Usa formatos y labels consistentes
+
