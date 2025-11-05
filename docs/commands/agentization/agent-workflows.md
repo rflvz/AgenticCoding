@@ -1,271 +1,242 @@
-# Comandos de Flujos de Trabajo de Agentes
+# Flujos de Trabajo de Agentes
 
-Flujos de trabajo que combinan agentización con comandos de Linear para automatizar procesos completos.
+> **⚠️⚠️⚠️ EXPERIMENTAL ⚠️⚠️⚠️**
+>
+> **Este comando es EXPERIMENTAL y está en desarrollo. No confiar ciegamente.**
+>
+> **Para comandos FUNCIONALES, usa los comandos de Linear en `.cursor/commands/`:**
+> - ✅ [Inicializar Contexto del Proyecto](../../../.cursor/commands/initialize-project-context.md)
+> - ✅ [Crear Issues](../../../.cursor/commands/create-issues.md)
+> - ✅ [Completar Issues](../../../.cursor/commands/complete-issues.md)
+> - ✅ [Revisar Issues](../../../.cursor/commands/review-issues.md)
+> - ✅ [Crear Proyectos](../../../.cursor/commands/create-projects.md)
+> - ✅ [Listar y Buscar](../../../.cursor/commands/list-search.md)
+
+Flujos de trabajo que combinan agentización con los comandos FUNCIONALES de Linear para automatizar procesos completos.
+
+> **⚠️ IMPORTANTE:** Antes de usar un workflow, lee el [documento de contexto del proyecto](../../../docs/project-context.md) para obtener información actualizada sobre el proyecto y trabajo en Linear. Este documento es la fuente única de verdad para contexto del proyecto. Si el documento no existe, usa el [comando FUNCIONAL de inicialización](../../../.cursor/commands/initialize-project-context.md) para crearlo.
+
+## Filosofía: Workflows Profesionales
+
+Cuando defines un workflow, **NO** solo das instrucciones básicas. Actúa como un **arquitecto de workflows profesional** que:
+
+1. **Analiza el contexto del proyecto** antes de definir el workflow
+2. **Lee el documento de contexto** del proyecto para información actualizada
+3. **Integra con comandos FUNCIONALES** de Linear
+4. **Define pasos claros** y responsabilidades específicas
+5. **Establece reglas profesionales** para cada paso del workflow
+6. **Añade contexto del proyecto** para mejor precisión
+
+## Proceso Profesional de Definición de Workflows
+
+### Paso 1: Leer Contexto del Proyecto
+
+**⚠️ REGLA CRÍTICA: SIEMPRE lee el documento de contexto del proyecto antes de definir un workflow:**
+
+1. **Leer documento de contexto:**
+   - Ubicación: `docs/project-context.md`
+   - Contiene: Información del proyecto, equipo, proyectos en Linear, issues activos, convenciones
+
+2. **Si el documento no existe:**
+   - Usa el comando FUNCIONAL: `.cursor/commands/initialize-project-context.md`
+   - Crea el documento de contexto antes de definir el workflow
+
+3. **Extraer información relevante:**
+   - Equipo principal y miembros
+   - Proyectos activos en Linear
+   - Issues activos y prioridades
+   - Convenciones del proyecto (commits, branches, labels)
+   - Flujos de trabajo establecidos
+
+### Paso 2: Definir Workflow
+
+**Define claramente el workflow y sus pasos:**
+
+1. **Objetivo del Workflow:**
+   - ¿Cuál es el objetivo del workflow? (ej: Crear issue desde error, Completar issue con commit)
+   - ¿Qué resultado final debe lograr?
+
+2. **Pasos del Workflow:**
+   - ¿Qué pasos específicos debe seguir el workflow?
+   - ¿Qué comandos FUNCIONALES debe usar en cada paso?
+   - ¿Qué decisiones debe tomar en cada paso?
+
+3. **Reglas del Workflow:**
+   - ¿Qué reglas debe seguir el workflow?
+   - ¿Cómo debe priorizar tareas?
+   - ¿Qué formato debe usar para crear issues?
 
 ## Flujos de Trabajo Básicos
 
 ### Workflow: Crear Issue desde Error
 
+**Workflow profesional para crear issues desde errores:**
+
 ```
 Workflow: Crear Issue desde Error
 
-1. Analiza el error proporcionado
-2. Identifica la causa raíz
-3. Crea issue en Linear:
-   @linear create issue "bug: [descripción del error]" \
-     --team "Engineering" \
-     --description "[análisis técnico completo]" \
-     --priority "[según severidad]" \
-     --labels "bug,[área afectada]"
-4. Añade stack trace si está disponible
-5. Incluye pasos para reproducir
+Pasos:
+1. Leer contexto del proyecto (docs/project-context.md)
+2. Analizar el error proporcionado
+3. Identificar la causa raíz
+4. Crear issue profesionalmente usando @linear create-issues:
+   - Usar comando FUNCIONAL: .cursor/commands/create-issues.md
+   - Título: "bug: [descripción del error]"
+   - Descripción: [análisis técnico completo]
+   - Prioridad: [según severidad y contexto del proyecto]
+   - Labels: "bug", [área afectada], [según docs/project-context.md]
+   - Equipo: [según docs/project-context.md]
+5. Añadir stack trace si está disponible
+6. Incluir pasos para reproducir
 ```
 
 ### Workflow: Completar Issue con Commit
 
+**Workflow profesional para completar issues desde commits:**
+
 ```
 Workflow: Completar Issue desde Commit
 
-1. Analiza el commit proporcionado
-2. Identifica issues relacionados
-3. Actualiza issue en Linear:
-   @linear update issue ISSUE_ID \
-     --state "Done" \
-     --description "[descripción actualizada con cambios]"
-4. Añade comentario:
-   @linear create comment ISSUE_ID \
-     "Completado en commit [hash]. Cambios: [resumen]"
-5. Incluye referencias al código modificado
+Pasos:
+1. Leer contexto del proyecto (docs/project-context.md)
+2. Analizar el commit proporcionado
+3. Identificar issues relacionados usando @linear list-search
+4. Completar issue profesionalmente usando @linear complete-issues:
+   - Usar comando FUNCIONAL: .cursor/commands/complete-issues.md
+   - Actualizar estado a "In Review" o "Done" según corresponda
+   - Añadir comentario con resumen de cambios
+   - Incluir referencias al código modificado
+5. Vincular commit al issue si es posible
 ```
 
 ### Workflow: Revisar Código y Crear Issues
 
+**Workflow profesional para revisar código y crear issues:**
+
 ```
 Workflow: Revisar y Crear Issues
 
-1. Revisa el código proporcionado
-2. Identifica problemas (bugs, vulnerabilidades, mejoras)
-3. Para cada problema:
-   @linear create issue "bug: [problema]" \
-     --team "Engineering" \
-     --description "[ubicación, descripción técnica, impacto]" \
-     --priority "[según severidad]" \
-     --labels "bug,[área],[severidad]"
-4. Proporciona resumen de issues creados
+Pasos:
+1. Leer contexto del proyecto (docs/project-context.md)
+2. Revisar el código proporcionado
+3. Identificar problemas (bugs, vulnerabilidades, mejoras)
+4. Para cada problema:
+   - Crear issue profesionalmente usando @linear create-issues:
+     * Usar comando FUNCIONAL: .cursor/commands/create-issues.md
+     * Título: "bug: [problema]" o "feature: [mejora]"
+     * Descripción: [ubicación, descripción técnica, impacto]
+     * Prioridad: [según severidad y contexto del proyecto]
+     * Labels: "bug", [área], [según docs/project-context.md]
+     * Equipo: [según docs/project-context.md]
+5. Proporcionar resumen de issues creados
 ```
 
 ## Flujos de Trabajo Avanzados
 
 ### Workflow: Dividir Feature en Issues
 
+**Workflow profesional para dividir features grandes en issues manejables:**
+
 ```
 Workflow: Dividir Feature
 
-1. Analiza la feature propuesta
-2. Crea issue padre (Epic):
-   @linear create issue "feature: [nombre]" \
-     --team "Engineering" \
-     --description "[visión general, requisitos]"
-3. Divide en issues más pequeños:
-   - Diseño: @linear create issue "docs: Diseño de [feature]"
-   - Backend: @linear create issue "feature: Backend - [componente]"
-   - Frontend: @linear create issue "feature: Frontend - [componente]"
-   - Tests: @linear create issue "chore: Tests para [feature]"
-4. Establece dependencias en descripciones
-5. Prioriza según importancia
-```
-
-### Workflow: Actualizar Estado de Proyecto
-
-```
-Workflow: Actualizar Estado de Proyecto
-
-1. Busca todos los issues del proyecto:
-   @linear list issues --project "[nombre del proyecto]"
-2. Analiza estados de issues hijos
-3. Actualiza issue padre según progreso:
-   @linear update issue PARENT_ID \
-     --description "[estado actualizado con progreso]"
-4. Identifica issues bloqueados
-5. Sugiere próximos pasos
+Pasos:
+1. Leer contexto del proyecto (docs/project-context.md)
+2. Analizar la feature propuesta
+3. Crear issue padre (Epic) usando @linear create-issues:
+   - Usar comando FUNCIONAL: .cursor/commands/create-issues.md
+   - Título: "feature: [nombre]" o "epic: [nombre]"
+   - Descripción: [visión general, requisitos, alcance]
+   - Labels: "feature", "epic", [según docs/project-context.md]
+4. Dividir en issues más pequeños usando @linear create-issues:
+   - Diseño: "docs: Diseño de [feature]"
+   - Backend: "feature: Backend - [componente]"
+   - Frontend: "feature: Frontend - [componente]"
+   - Tests: "chore: Tests para [feature]"
+   - Documentación: "docs: Documentación de [feature]"
+5. Establecer dependencias en descripciones
+6. Priorizar según importancia (según docs/project-context.md)
 ```
 
 ### Workflow: Generar Reporte de Sprint
 
+**Workflow profesional para generar reportes de sprint:**
+
 ```
 Workflow: Reporte de Sprint
 
-1. Lista issues del sprint:
-   @linear list issues --team "[equipo]" --created-after "[fecha inicio]"
-2. Analiza:
+Pasos:
+1. Leer contexto del proyecto (docs/project-context.md)
+2. Listar issues del sprint usando @linear list-search:
+   - Usar comando FUNCIONAL: .cursor/commands/list-search.md
+   - Filtrar por equipo y fecha de creación
+3. Analizar:
    - Issues completados
    - Issues en progreso
    - Issues bloqueados
    - Velocidad del equipo
-3. Genera reporte con:
+4. Generar reporte con:
    - Resumen ejecutivo
    - Lista de issues por estado
    - Identificación de bloqueos
-   - Sugerencias para próximo sprint
+   - Sugerencias para próximo sprint (según docs/project-context.md)
 ```
 
-## Flujos de Trabajo Combinados
+## Integración con Comandos FUNCIONALES
 
-### Workflow: Desarrollo Completo
+**Integra los workflows con los comandos FUNCIONALES de Linear:**
 
-```
-Workflow: Desarrollo Completo
+1. **Referenciar comandos FUNCIONALES:**
+   - Cuando crear issues: Usar `.cursor/commands/create-issues.md`
+   - Cuando completar issues: Usar `.cursor/commands/complete-issues.md`
+   - Cuando revisar issues: Usar `.cursor/commands/review-issues.md`
+   - Cuando listar issues: Usar `.cursor/commands/list-search.md`
 
-1. Contextualizar agente como Developer
-2. Buscar issues asignados:
-   @linear list issues --assignee "me" --state "Todo"
-3. Para cada issue:
-   a. Actualizar a "In Progress":
-      @linear update issue ISSUE_ID --state "In Progress"
-   b. Desarrollar código
-   c. Revisar código
-   d. Si hay bugs, crear issues:
-      @linear create issue "bug: [descripción]"
-   e. Completar issue:
-      @linear update issue ISSUE_ID --state "Done"
-      @linear create comment ISSUE_ID "Completado: [resumen]"
-4. Generar reporte de progreso
-```
+2. **Usar contexto del proyecto:**
+   - Leer `docs/project-context.md` antes de ejecutar el workflow
+   - Aplicar reglas y convenciones definidas
+   - Seguir el flujo de trabajo profesional
 
-### Workflow: Revisión de Código Completa
+## Checklist de Profesionalismo
 
-```
-Workflow: Revisión Completa
+### ⚠️ Antes de Definir un Workflow
 
-1. Contextualizar agente como Code Reviewer
-2. Revisar código proporcionado
-3. Para cada problema encontrado:
-   a. Crear issue:
-      @linear create issue "bug: [problema]" \
-        --priority "[según severidad]"
-   b. Añadir comentario con sugerencias
-4. Buscar issues similares:
-   @linear search issues "[término relacionado]"
-5. Agrupar issues relacionados si aplica
-6. Generar resumen de revisión
-```
+- [ ] ¿He leído el documento de contexto del proyecto (`docs/project-context.md`)?
+- [ ] ¿He identificado los pasos específicos del workflow?
+- [ ] ¿He definido las reglas profesionales para cada paso?
+- [ ] ¿He integrado con comandos FUNCIONALES de Linear?
 
-### Workflow: Project Management Completo
+### Al Definir el Workflow
 
-```
-Workflow: PM Completo
+- [ ] ¿El workflow usa comandos FUNCIONALES de Linear?
+- [ ] ¿Las reglas siguen las convenciones del proyecto?
+- [ ] ¿El workflow usa el contexto del proyecto en sus decisiones?
+- [ ] ¿El workflow puede ejecutarse profesionalmente?
 
-1. Contextualizar agente como Project Manager
-2. Generar reporte del proyecto:
-   @linear list issues --project "[proyecto]"
-3. Analizar:
-   - Progreso general
-   - Dependencias
-   - Bloqueos
-   - Velocidad
-4. Actualizar issues según necesidad:
-   @linear update issue ISSUE_ID --priority "[nueva prioridad]"
-5. Reasignar tareas si es necesario:
-   @linear update issue ISSUE_ID --assignee "[nuevo asignado]"
-6. Generar reporte ejecutivo
-```
+### Después de Definir el Workflow
 
-## Flujos de Trabajo Especializados
+- [ ] ¿El workflow puede crear issues usando el comando FUNCIONAL create-issues.md?
+- [ ] ¿El workflow aplica las reglas definidas correctamente?
+- [ ] ¿El workflow sigue las convenciones del proyecto?
+- [ ] ¿El workflow usa el contexto del proyecto en cada paso?
 
-### Workflow: Fix de Bug Crítico
+## Consejos Finales
 
-```
-Workflow: Bug Crítico
+1. **⚠️ SIEMPRE lee el documento de contexto del proyecto** antes de definir o ejecutar un workflow
+2. **Usa comandos FUNCIONALES de Linear** en lugar de comandos experimentales
+3. **Define workflows claros** con pasos específicos
+4. **Establece reglas profesionales** para cada paso del workflow
+5. **Integra con comandos FUNCIONALES** para máxima efectividad
+6. **Añade contexto del proyecto** para mejor precisión
+7. **Actualiza workflows** cuando cambie el proyecto
 
-1. Crear issue urgente:
-   @linear create issue "bug: [descripción]" \
-     --priority "Urgent" \
-     --labels "bug,critical,hotfix"
-2. Asignar a desarrollador:
-   @linear update issue ISSUE_ID --assignee "[dev]"
-3. Monitorear progreso:
-   @linear get issue ISSUE_ID
-4. Cuando se complete:
-   @linear update issue ISSUE_ID --state "Done"
-   @linear create comment ISSUE_ID "Fix aplicado en [commit]"
-5. Verificar fix
-6. Cerrar issue
-```
+## Referencias
 
-### Workflow: Feature Request Completo
+- [Documento de Contexto del Proyecto](../../../docs/project-context.md) - Fuente única de verdad para contexto del proyecto
+- [Comandos FUNCIONALES de Linear](../../../.cursor/commands/) - Comandos completamente funcionales y probados
+- [Crear Issues](../../../.cursor/commands/create-issues.md) - Crear issues profesionalmente
+- [Completar Issues](../../../.cursor/commands/complete-issues.md) - Completar issues profesionalmente
+- [Revisar Issues](../../../.cursor/commands/review-issues.md) - Revisar issues profesionalmente
+- [Listar y Buscar](../../../.cursor/commands/list-search.md) - Listar y buscar issues
 
-```
-Workflow: Feature Request
-
-1. Analizar requisitos
-2. Crear issue de diseño:
-   @linear create issue "docs: Diseño de [feature]" \
-     --team "[equipo]" \
-     --labels "feature,design"
-3. Dividir en issues de implementación
-4. Crear issues hijos:
-   @linear create issue "feature: [componente]" \
-     --project "[feature]"
-5. Establecer dependencias
-6. Asignar tareas
-7. Monitorear progreso
-```
-
-## Ejemplos de Uso
-
-### Ejecutar Workflow de Revisión
-
-```
-Ejecuta workflow: Revisar Código y Crear Issues
-
-Código a revisar:
-[archivo.js]
-
-El agente ejecuta:
-1. Revisa el código
-2. Identifica problemas
-3. Crea issues para cada problema
-4. Proporciona resumen
-```
-
-### Ejecutar Workflow de Desarrollo
-
-```
-Ejecuta workflow: Desarrollo Completo
-
-Issues a trabajar:
-- ISSUE-123: Implementar autenticación
-- ISSUE-124: Crear UI de login
-
-El agente ejecuta:
-1. Actualiza issues a "In Progress"
-2. Trabaja en los issues
-3. Crea issues para bugs encontrados
-4. Completa issues cuando termina
-5. Genera reporte
-```
-
-### Ejecutar Workflow de PM
-
-```
-Ejecuta workflow: Project Management Completo
-
-Proyecto: "Sistema de Autenticación"
-Equipo: "Engineering"
-
-El agente ejecuta:
-1. Genera reporte del proyecto
-2. Analiza progreso
-3. Identifica bloqueos
-4. Sugiere ajustes
-5. Actualiza issues según necesidad
-```
-
-## Consejos
-
-- Combina workflows para procesos complejos
-- Personaliza workflows según necesidades del proyecto
-- Usa workflows para automatizar tareas repetitivas
-- Integra workflows con comandos de Linear
-- Documenta workflows personalizados para reutilización
-
+---
