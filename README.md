@@ -12,6 +12,7 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 ### Comandos
 
 #### Linear
+- [Inicializar Contexto del Proyecto](./docs/commands/linear/initialize-project-context.md) - Crear documento de contexto centralizado
 - [Crear Issues](./docs/commands/linear/create-issues.md) - Comandos para crear issues en Linear
 - [Completar Issues](./docs/commands/linear/complete-issues.md) - Comandos para completar y actualizar issues
 - [Listar y Buscar](./docs/commands/linear/list-search.md) - Comandos para listar y buscar issues
@@ -49,6 +50,7 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 - [Mejores Prácticas](./docs/rules/best-practices.md) - Reglas, patrones y anti-patterns
 
 ### Agentización Avanzada
+- [Contexto del Proyecto](./docs/project-context.md) - Documento centralizado de contexto del proyecto y Linear
 - [Gestión de Memoria](./docs/agentization/memory-management.md) - Técnicas para mantener contexto entre sesiones
 - [Contexto Compartido](./docs/agentization/shared-context.md) - Sincronización de contexto entre múltiples agentes
 - [Métricas y Tracking](./docs/agentization/metrics-tracking.md) - Tracking de uso y eficiencia de agentes
