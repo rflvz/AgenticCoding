@@ -192,6 +192,7 @@ Cuando crees un proyecto, **NO** solo uses el MCP de Linear para crear un proyec
    - Documentación técnica
    - Documentación de usuario
    - Guías de desarrollo
+   - **⚠️ Documentación del proyecto en cursor rules** (archivos `.cursorrules`)
 
 3. **Aclarar con el usuario:**
    - Presentar issues iniciales identificados
@@ -296,7 +297,86 @@ Cuando crees un proyecto, **NO** solo uses el MCP de Linear para crear un proyec
 4. **Actualizar issues con dependencias:**
    - Usa: `update_issue` con `id` del issue y `description` actualizada
 
-### Paso 8: Verificación y Documentación
+### Paso 8: Documentación del Proyecto en Cursor Rules
+
+**⚠️ IMPORTANTE: La documentación del proyecto debe estar en archivos `.cursorrules`**
+
+#### Filosofía de Documentación en Cursor Rules
+
+Cuando se crea un proyecto y su documentación, **la documentación del proyecto debe estar en archivos `.cursorrules`** para mantener la consistencia y asegurar que la documentación del proyecto esté accesible a través del sistema de reglas de Cursor.
+
+#### Estructura de Documentación en Cursor Rules
+
+1. **Crear archivo `.cursorrules` en la raíz del proyecto:**
+   - Nombre sugerido: `.cursorrules` o `[nombre-proyecto].cursorrules`
+   - Ubicación: Raíz del repositorio del proyecto
+
+2. **Estructura recomendada del archivo `.cursorrules`:**
+   ```markdown
+   # Reglas para [Nombre del Proyecto]
+   
+   Eres un experto en [área de especialización] trabajando en este proyecto.
+   
+   ## Contexto del Proyecto
+   
+   - Objetivo: [Objetivo principal del proyecto]
+   - Tecnologías: [Stack tecnológico]
+   - Arquitectura: [Descripción arquitectónica]
+   - Equipos: [Equipos involucrados]
+   
+   ## Reglas de Desarrollo
+   
+   [Reglas específicas del proyecto]
+   
+   ## Estándares y Convenciones
+   
+   [Convenciones de código, nombres, estructura, etc.]
+   
+   ## Referencias
+   
+   - Ver documentación en `docs/`
+   - Ver ejemplos en `examples/`
+   - Ver issues en Linear: [Enlace al proyecto en Linear]
+   ```
+
+3. **Ejemplos de documentación en cursor rules:**
+   - Ver ejemplos en `examples/cursorrules-templates/`:
+     - `fullstack-project.cursorrules`: Ejemplo para proyectos fullstack
+     - `react-project.cursorrules`: Ejemplo para proyectos React
+     - `nodejs-project.cursorrules`: Ejemplo para proyectos Node.js
+     - `python-project.cursorrules`: Ejemplo para proyectos Python
+
+4. **Incluir información clave del proyecto:**
+   - Stack tecnológico utilizado
+   - Arquitectura y decisiones técnicas
+   - Convenciones de código y estilo
+   - Estructura de directorios
+   - Proceso de desarrollo y workflow
+   - Enlaces a recursos relevantes (Linear, documentación, etc.)
+
+5. **Actualizar cursor rules cuando sea necesario:**
+   - Mantener sincronizado con cambios en el proyecto
+   - Actualizar cuando se añaden nuevas tecnologías o convenciones
+   - Reflejar decisiones arquitectónicas importantes
+
+#### Crear Issue para Documentación en Cursor Rules
+
+**Siempre incluye un issue inicial para documentación en cursor rules:**
+
+1. **Issue sugerido:**
+   - Título: `docs: Crear documentación del proyecto en cursor rules`
+   - Tipo: `docs`
+   - Descripción: Incluir referencia a la estructura recomendada y ejemplos
+   - Labels: `docs`, `cursor`, `documentation`
+
+2. **Criterios de aceptación:**
+   - [ ] Archivo `.cursorrules` creado en la raíz del proyecto
+   - [ ] Documentación incluye contexto del proyecto
+   - [ ] Documentación incluye reglas de desarrollo
+   - [ ] Documentación incluye estándares y convenciones
+   - [ ] Documentación está sincronizada con información del proyecto en Linear
+
+### Paso 9: Verificación y Documentación
 
 **Verificar que todo esté correcto:**
 
@@ -308,12 +388,14 @@ Cuando crees un proyecto, **NO** solo uses el MCP de Linear para crear un proyec
 - [ ] ¿Las dependencias están documentadas?
 - [ ] ¿Los issues están organizados jerárquicamente (Epics y sub-issues)?
 - [ ] ¿Las prioridades son apropiadas?
+- [ ] ⚠️ **¿Se ha incluido issue para documentación en cursor rules?**
 
 #### Actualizar Proyecto con Resumen
 
 1. **Actualizar descripción del proyecto:**
    - Añade sección de "Issues Iniciales" con lista de issues creados
    - Añade sección de "Progreso" para tracking
+   - ⚠️ **Añade sección de "Documentación" mencionando que la documentación del proyecto debe estar en `.cursorrules`**
 
 2. **Actualizar proyecto:**
    - Usa: `update_project` con `id` del proyecto y `description` actualizada
@@ -366,6 +448,8 @@ Antes de considerar un proyecto completo, verifica:
 - [ ] ¿Los issues están organizados jerárquicamente (Epics y sub-issues)?
 - [ ] ¿Las dependencias están documentadas?
 - [ ] ¿Las prioridades son apropiadas?
+- [ ] ⚠️ **¿He incluido issue para documentación en cursor rules?**
+- [ ] ⚠️ **¿He aclarado que la documentación del proyecto debe estar en `.cursorrules`?**
 - [ ] ¿He actualizado el proyecto con resumen de issues iniciales?
 
 ## Consejos Finales
@@ -378,3 +462,5 @@ Antes de considerar un proyecto completo, verifica:
 6. **Aclara dudas antes de crear** - Mejor preguntar que asumir
 7. **Actúa como experto** - No solo uses el MCP, sé estratégico
 8. **Vincula issues al proyecto** - Usa el parámetro `project` para mantener todo organizado
+9. **⚠️ Documenta en cursor rules** - La documentación del proyecto debe estar en archivos `.cursorrules` para mantener consistencia y accesibilidad
+10. **Referencia ejemplos** - Usa los ejemplos en `examples/cursorrules-templates/` como guía para estructurar la documentación en cursor rules
