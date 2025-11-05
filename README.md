@@ -2,6 +2,24 @@
 
 Guía de referencia rápida para agentización profesional de código usando Cursor, incluyendo configuración de MCPs, comandos avanzados, técnicas de contextualización de agentes y mejores prácticas.
 
+> **⚠️ FUNCIONAL vs EXPERIMENTAL**
+>
+> **IMPORTANTE:** Esta guía contiene tanto comandos **FUNCIONALES** (completamente funcionales y probados) como comandos **EXPERIMENTALES** (en desarrollo). Siempre usa primero los comandos FUNCIONALES.
+>
+> **✅ Comandos FUNCIONALES - SOLO COMANDOS DE LINEAR:**
+> - **Los comandos de Linear son los únicos FUNCIONALES** - Completamente funcionales y probados
+> - Ubicados en `.cursor/commands/` - Comandos funcionales de Linear en general
+> - Ubicados en `docs/commands/linear/` - Comandos funcionales de Linear específicos
+> - **Solo estos comandos están completamente funcionales y probados**
+>
+> **⚠️ Comandos EXPERIMENTALES - TODOS LOS DEMÁS:**
+> - **Todos los demás comandos son EXPERIMENTALES** - En desarrollo, no confiar ciegamente
+> - Ubicados en `docs/commands/agentization/` - Comandos experimentales de agentización
+> - Ubicados en `docs/commands/productivity/` - Comandos experimentales de productividad
+> - **Estos comandos están en desarrollo y no deben usarse sin precaución**
+>
+> **Workflow Principal FUNCIONAL (solo comandos de Linear):** `initialize-project-context` → `create-projects` → `create-issues` → `complete-issues` → `review-issues`
+
 ## Índice
 
 ### Setup
@@ -9,26 +27,48 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 - [Configuración MCP de GitHub](./docs/setup/mcp-github.md) - Instalación y configuración del MCP de GitHub
 - [Configuración MCP de Slack/Discord](./docs/setup/mcp-slack.md) - Instalación y configuración de notificaciones
 
-### Comandos
+### Comandos FUNCIONALES (✅ Completamente Funcionales)
 
-#### Linear
-- [Inicializar Contexto del Proyecto](./docs/commands/linear/initialize-project-context.md) - Crear documento de contexto centralizado
-- [Crear Issues](./docs/commands/linear/create-issues.md) - Comandos para crear issues en Linear
-- [Completar Issues](./docs/commands/linear/complete-issues.md) - Comandos para completar y actualizar issues
-- [Listar y Buscar](./docs/commands/linear/list-search.md) - Comandos para listar y buscar issues
+> **⚠️ IMPORTANTE:** **Solo los comandos de Linear son FUNCIONALES.** Todos los demás comandos son EXPERIMENTALES.
 
-#### Agentización
-- [Agente Orquestador](./docs/commands/agentization/agent-orchestrator.md) - Agente especializado en project management
-- [Contextualización de Agentes](./docs/commands/agentization/agent-context.md) - Comandos para contextualizar agentes
-- [Roles de Agentes](./docs/commands/agentization/agent-roles.md) - Definición de roles especializados
-- [Flujos de Trabajo](./docs/commands/agentization/agent-workflows.md) - Workflows que combinan agentización con Linear
+**Ubicaciones:** `.cursor/commands/` (comandos de Linear) y `docs/commands/linear/` (comandos de Linear)
 
-#### Productividad
-- [Atajos de Teclado](./docs/commands/productivity/keyboard-shortcuts.md) - Atajos de teclado de Cursor
-- [Referencia Rápida](./docs/commands/productivity/quick-reference.md) - Comandos rápidos y referencias esenciales
-- [Variables Útiles](./docs/commands/productivity/variables.md) - Variables y parámetros especiales
-- [Consejos de Productividad](./docs/commands/productivity/tips.md) - Consejos y técnicas para maximizar productividad
-- [Flujos de Trabajo Rápidos](./docs/commands/productivity/workflows.md) - Flujos de trabajo comunes
+#### Linear (FUNCIONALES - Los únicos comandos funcionales)
+
+**En `.cursor/commands/` (comandos funcionales de Linear):**
+- ✅ [Inicializar Contexto del Proyecto](./.cursor/commands/initialize-project-context.md) - Crear documento de contexto centralizado
+- ✅ [Crear Issues](./.cursor/commands/create-issues.md) - Comandos para crear issues en Linear
+- ✅ [Crear Proyectos](./.cursor/commands/create-projects.md) - Comandos para crear proyectos en Linear
+- ✅ [Completar Issues](./.cursor/commands/complete-issues.md) - Comandos para completar y actualizar issues
+- ✅ [Revisar Issues](./.cursor/commands/review-issues.md) - Comandos para revisar issues en estado "In Review"
+- ✅ [Listar y Buscar](./.cursor/commands/list-search.md) - Comandos para listar y buscar issues
+
+**En `docs/commands/linear/` (comandos funcionales de Linear - duplicados):**
+- ✅ [Inicializar Contexto del Proyecto](./docs/commands/linear/initialize-project-context.md) - Crear documento de contexto centralizado
+- ✅ [Crear Issues](./docs/commands/linear/create-issues.md) - Comandos para crear issues en Linear
+- ✅ [Crear Proyectos](./docs/commands/linear/create-projects.md) - Comandos para crear proyectos en Linear
+- ✅ [Completar Issues](./docs/commands/linear/complete-issues.md) - Comandos para completar y actualizar issues
+- ✅ [Revisar Issues](./docs/commands/linear/review-issues.md) - Comandos para revisar issues en estado "In Review"
+- ✅ [Listar y Buscar](./docs/commands/linear/list-search.md) - Comandos para listar y buscar issues
+
+### Comandos EXPERIMENTALES (⚠️ En Desarrollo)
+
+> **⚠️ IMPORTANTE:** **Todos los comandos que NO son de Linear son EXPERIMENTALES.** Solo los comandos de Linear son FUNCIONALES.
+
+**Ubicaciones:** `docs/commands/agentization/` y `docs/commands/productivity/`
+
+#### Agentización (EXPERIMENTALES)
+- ⚠️ [Agente Orquestador](./docs/commands/agentization/agent-orchestrator.md) - Agente especializado en project management
+- ⚠️ [Contextualización de Agentes](./docs/commands/agentization/agent-context.md) - Comandos para contextualizar agentes
+- ⚠️ [Roles de Agentes](./docs/commands/agentization/agent-roles.md) - Definición de roles especializados
+- ⚠️ [Flujos de Trabajo](./docs/commands/agentization/agent-workflows.md) - Workflows que combinan agentización con Linear
+
+#### Productividad (EXPERIMENTALES)
+- ⚠️ [Atajos de Teclado](./docs/commands/productivity/keyboard-shortcuts.md) - Atajos de teclado de Cursor
+- ⚠️ [Referencia Rápida](./docs/commands/productivity/quick-reference.md) - Comandos rápidos y referencias esenciales
+- ⚠️ [Variables Útiles](./docs/commands/productivity/variables.md) - Variables y parámetros especiales
+- ⚠️ [Consejos de Productividad](./docs/commands/productivity/tips.md) - Consejos y técnicas para maximizar productividad
+- ⚠️ [Flujos de Trabajo Rápidos](./docs/commands/productivity/workflows.md) - Flujos de trabajo comunes
 
 ### Agentes
 - [Agentes Expertos](./docs/agents/expert-agents.md) - Técnicas de creación y contextualización de agentes especializados
@@ -69,6 +109,47 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 - [Configuraciones de Agentes](./examples/agent-configs/) - Configuraciones predefinidas de agentes especializados
 
 ## Inicio Rápido
+
+### Workflow Principal FUNCIONAL
+
+**Sigue este flujo para trabajar con Linear en Cursor:**
+
+1. **Inicializar Contexto del Proyecto**
+   ```bash
+   # Usa: .cursor/commands/initialize-project-context.md
+   # O: docs/commands/linear/initialize-project-context.md
+   # Crea el documento de contexto centralizado del proyecto
+   ```
+
+2. **Crear Proyecto en Linear**
+   ```bash
+   # Usa: .cursor/commands/create-projects.md
+   # O: docs/commands/linear/create-projects.md
+   # Crea un nuevo proyecto con issues iniciales
+   ```
+
+3. **Crear Issues en Linear**
+   ```bash
+   # Usa: .cursor/commands/create-issues.md
+   # O: docs/commands/linear/create-issues.md
+   # Crea issues profesionalmente con toda la información necesaria
+   ```
+
+4. **Completar Issues**
+   ```bash
+   # Usa: .cursor/commands/complete-issues.md
+   # O: docs/commands/linear/complete-issues.md
+   # Implementa código y mueve issues a "In Review"
+   ```
+
+5. **Revisar Issues**
+   ```bash
+   # Usa: .cursor/commands/review-issues.md
+   # O: docs/commands/linear/review-issues.md
+   # Revisa issues en "In Review" y aprueba o solicita cambios
+   ```
+
+### Configuración Inicial
 
 1. **Configurar MCP de Linear**
    ```bash
