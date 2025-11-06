@@ -1,146 +1,158 @@
+> **⚠️⚠️⚠️ EXPERIMENTAL ⚠️⚠️⚠️**
+> 
+> **Este comando es EXPERIMENTAL y está en desarrollo. No confiar ciegamente.**
+> 
+> **Para comandos FUNCIONALES, usa los comandos de Linear en `.cursor/commands/`:**
+> - ✅ [Inicializar Contexto del Proyecto](../../../.cursor/commands/initialize-project-context.md)
+> - ✅ [Crear Issues](../../../.cursor/commands/create-issues.md)
+> - ✅ [Completar Issues](../../../.cursor/commands/complete-issues.md)
+> - ✅ [Revisar Issues](../../../.cursor/commands/review-issues.md)
+> - ✅ [Crear Proyectos](../../../.cursor/commands/create-projects.md)
+> - ✅ [Listar y Buscar](../../../.cursor/commands/list-search.md)
+>     
+>     Estos comandos se activan en tu proyecto simplemente poniendo:
+>     `/el-comando`
+>     Por ejemplo: `/create-issues`, `/complete-issues`, `/review-issues`
+
 # Variables Útiles
 
-Variables y parámetros especiales para usar en comandos de Linear y agentización.
+Guía profesional para recordar usar estados y características al crear issues en Linear, asegurando que los issues no se creen vacíos.
 
-## Variables de Usuario
+## Filosofía: Crear Issues Completos
 
-### Usar "me" como Assignee
+**⚠️ REGLA CRÍTICA: Los issues deben crearse con toda la información necesaria, NO vacíos:**
 
-La palabra `"me"` se refiere automáticamente a tu usuario actual:
+Cuando crees issues en Linear, **NO** los dejes vacíos. Actúa como un **desarrollador profesional** que:
 
-```
-@linear list issues --assignee "me"
-@linear create issue "Título" --assignee "me"
-@linear update issue ISSUE_ID --assignee "me"
-```
+1. **Usa estados apropiados** al crear issues
+2. **Asigna prioridades** según la importancia
+3. **Añade labels** para mejor organización
+4. **Asigna a usuarios** cuando sea apropiado
+5. **Añade descripciones completas** con contexto técnico
 
-### Referencias Especiales
+## Proceso de Uso Profesional
 
-- `"me"` - Tu usuario actual
-- `"usuario@email.com"` - Usuario específico por email
-- `"Nombre Usuario"` - Usuario por nombre
+### Paso 1: Estados de Issues
 
-## Fechas Relativas
+**⚠️ REGLA CRÍTICA: Siempre asigna un estado apropiado al crear issues:**
 
-### Formatos ISO 8601
+#### Estados Disponibles
 
-Usa duraciones ISO 8601 para fechas relativas:
-
-- `-P1D` - Último día (Past 1 Day)
-- `-P7D` - Última semana (Past 7 Days)
-- `-P30D` - Último mes (Past 30 Days)
-- `-P1W` - Última semana (Past 1 Week)
-- `-P1M` - Último mes (Past 1 Month)
-
-### Ejemplos de Uso
-
-```
-@linear list issues --created-after "-P1D"
-@linear list issues --created-after "-P7D"
-@linear list issues --updated-after "-P30D"
-```
-
-### Fechas Absolutas
-
-También puedes usar fechas absolutas:
-
-```
-@linear list issues --created-after "2025-01-01"
-@linear list issues --due-before "2025-12-31"
-```
-
-Formato: `YYYY-MM-DD`
-
-## Prioridades
-
-### Valores de Prioridad
-
-- `Urgent` - Urgente
-- `High` - Alta
-- `Normal` - Normal (por defecto)
-- `Low` - Baja
-
-### Ejemplos
-
-```
-@linear create issue "Título" --priority "Urgent"
-@linear update issue ISSUE_ID --priority "High"
-@linear list issues --priority "High"
-```
-
-## Estados
-
-### Estados Comunes
-
-- `Backlog` - Pendiente
-- `Todo` - Por hacer
-- `In Progress` - En progreso
-- `In Review` - En revisión
+- `Backlog` - Pendiente, no iniciado
+- `Todo` - Por hacer, listo para empezar
+- `In Progress` - En progreso, trabajo activo
+- `In Review` - En revisión, esperando aprobación
 - `Done` - Completado
 - `Canceled` - Cancelado
 
-### Ejemplos
+**Uso profesional:**
+- Usa `Todo` para issues nuevos que están listos para empezar
+- Usa `In Progress` cuando empieces a trabajar en el issue
+- Usa `In Review` cuando el trabajo esté completo y esperando revisión
+- Usa `Done` solo cuando el issue esté completamente completado y aprobado
 
-```
-@linear create issue "Título" --state "Todo"
-@linear update issue ISSUE_ID --state "In Progress"
-@linear list issues --state "Done"
-```
+### Paso 2: Prioridades
 
-## Labels
+**⚠️ REGLA CRÍTICA: Siempre asigna una prioridad apropiada:**
 
-### Uso de Labels
+#### Prioridades Disponibles
 
-Separa múltiples labels con comas:
+- `Urgent` - Urgente (solo bugs críticos que bloquean producción)
+- `High` - Alta (features importantes o bugs significativos)
+- `Normal` - Normal (por defecto, trabajo regular)
+- `Low` - Baja (mejoras menores)
 
-```
-@linear create issue "Título" --labels "bug,frontend,urgent"
-@linear update issue ISSUE_ID --labels "bug,hotfix"
-@linear list issues --label "bug"
-```
+**Uso profesional:**
+- No marques todo como Urgent
+- Usa prioridades apropiadamente según la importancia
+- Revisa prioridades regularmente
 
-### Labels Comunes
+### Paso 3: Labels
+
+**⚠️ REGLA CRÍTICA: Usa labels para mejor organización:**
+
+#### Labels Comunes
 
 - **Tipos**: `bug`, `feature`, `refactor`, `docs`, `chore`
 - **Áreas**: `frontend`, `backend`, `api`, `database`
 - **Severidad**: `urgent`, `high-priority`, `low-priority`
 
-## Parámetros de Búsqueda
+**Uso profesional:**
+- Usa labels consistentemente según convenciones del proyecto
+- Combina tipos con áreas para mejor organización
+- Usa máximo 5 labels por issue
 
-### Ordenamiento
+### Paso 4: Asignación
 
-```
-@linear list issues --order-by "createdAt"
-@linear list issues --order-by "updatedAt"
-```
+**⚠️ REGLA CRÍTICA: Asigna issues a usuarios apropiados:**
 
-### Límites
+#### Asignación
 
-```
-@linear list issues --limit 50
-```
+- Asigna a usuarios específicos cuando sea apropiado
+- Usa `"me"` para auto-asignación
+- Deja sin asignar si no está claro quién debe trabajar en el issue
 
-Por defecto: 50, Máximo: 250
+**Uso profesional:**
+- Asigna issues cuando sepas quién debe trabajar en ellos
+- Usa auto-asignación cuando vayas a trabajar en el issue tú mismo
+- Reasigna si es necesario durante el desarrollo
 
-## Scope para Issues Recurrentes
+### Paso 5: Descripciones Completas
 
-### Opciones de Scope
+**⚠️ REGLA CRÍTICA: Añade descripciones completas con contexto técnico:**
 
-- `thisEventOnly` - Solo este evento
-- `thisAndFollowing` - Este y siguientes
-- `all` - Todos los eventos
+#### Información a Incluir
 
-### Ejemplos
+- Contexto técnico completo
+- Pasos para reproducir (si es un bug)
+- Comportamiento esperado vs actual
+- Código relevante
+- Referencias a archivos
 
-```
-@linear update issue ISSUE_ID --state "Done" --scope "thisEventOnly"
-@linear update issue ISSUE_ID --scope "thisAndFollowing"
-```
+**Uso profesional:**
+- Incluye contexto técnico suficiente
+- Añade ejemplos cuando sea útil
+- Referencia código y archivos relevantes
 
-## Consejos
+## Integración con Comandos FUNCIONALES
 
-- Usa `"me"` para filtrar por tus issues automáticamente
-- Las fechas relativas (`-P1D`) son más útiles que fechas absolutas
-- Combina múltiples labels para filtros precisos
-- Usa estados apropiados según tu flujo de trabajo
+**⚠️ IMPORTANTE: Usa estos recordatorios al usar los comandos FUNCIONALES de Linear:**
 
+**Referencias a comandos FUNCIONALES:**
+- [Crear Issues](../../../.cursor/commands/create-issues.md) - Usa estados, prioridades, labels y descripciones completas al crear issues
+- [Completar Issues](../../../.cursor/commands/complete-issues.md) - Actualiza estados apropiadamente durante el proceso
+- [Revisar Issues](../../../.cursor/commands/review-issues.md) - Verifica que los issues tengan toda la información necesaria
+
+**Cuándo usar cada uno:**
+- **Estados**: Al crear issues y durante el proceso de desarrollo
+- **Prioridades**: Al crear issues para indicar importancia
+- **Labels**: Al crear issues para mejor organización
+- **Descripciones**: Siempre al crear issues para proporcionar contexto
+
+## Checklist de Profesionalismo
+
+### ⚠️ Al Crear Issues
+
+- [ ] ¿He asignado un estado apropiado?
+- [ ] ¿He asignado una prioridad apropiada?
+- [ ] ¿He añadido labels apropiados?
+- [ ] ¿He asignado a un usuario apropiado?
+- [ ] ¿He añadido una descripción completa con contexto técnico?
+
+### Antes de Completar Issues
+
+- [ ] ¿He actualizado el estado apropiadamente?
+- [ ] ¿He añadido comentarios con contexto técnico?
+- [ ] ¿He incluido referencias a commits y PRs?
+
+## Consejos Finales
+
+1. **⚠️ Nunca crees issues vacíos** - Siempre incluye estado, prioridad, labels y descripción
+2. **Usa estados apropiadamente** - Indica claramente el estado del issue
+3. **Asigna prioridades correctamente** - No marques todo como Urgent
+4. **Usa labels consistentemente** - Sigue convenciones del proyecto
+5. **Añade descripciones completas** - Proporciona contexto técnico suficiente
+6. **Integra con comandos FUNCIONALES** - Para procesos completos y trabajo profesional
+
+---
+_Hecho por Cursor_

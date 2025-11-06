@@ -1,164 +1,309 @@
+> **⚠️⚠️⚠️ EXPERIMENTAL ⚠️⚠️⚠️**
+> 
+> **Este comando es EXPERIMENTAL y está en desarrollo. No confiar ciegamente.**
+> 
+> **Para comandos FUNCIONALES, usa los comandos de Linear en `.cursor/commands/`:**
+> - ✅ [Inicializar Contexto del Proyecto](../../../.cursor/commands/initialize-project-context.md)
+> - ✅ [Crear Issues](../../../.cursor/commands/create-issues.md)
+> - ✅ [Completar Issues](../../../.cursor/commands/complete-issues.md)
+> - ✅ [Revisar Issues](../../../.cursor/commands/review-issues.md)
+> - ✅ [Crear Proyectos](../../../.cursor/commands/create-projects.md)
+> - ✅ [Listar y Buscar](../../../.cursor/commands/list-search.md)
+>     
+>     Estos comandos se activan en tu proyecto simplemente poniendo:
+>     `/el-comando`
+>     Por ejemplo: `/create-issues`, `/complete-issues`, `/review-issues`
+
 # Flujos de Trabajo Rápidos
 
-Flujos de trabajo comunes y rápidos para tareas frecuentes.
+Guía profesional de flujos de trabajo comunes usando comandos de Cursor y herramientas MCP de Linear.
 
-## Flujos de Trabajo Básicos
+## Filosofía: Flujos de Trabajo Eficientes
 
-### Crear Issue desde Error
+Los flujos de trabajo eficientes **multiplican la productividad**. Actúa como un **desarrollador profesional** que:
 
-```
-1. Analiza el error proporcionado
-2. Identifica la causa raíz
-3. Crea issue en Linear:
-   @linear create issue "bug: [descripción del error]" \
-     --team "Engineering" \
-     --labels "bug" \
-     --priority "High" \
-     --description "[análisis técnico completo]"
-```
+1. **Usa comandos de Cursor** (`/create-issues`, `/complete-issues`, etc.) para procesos completos
+2. **Combina comandos** para crear flujos personalizados
+3. **Deja que el agente use herramientas MCP** automáticamente cuando sea necesario
+4. **Crea issues completos** con estados, prioridades, labels y descripciones
+5. **Documenta el trabajo** realizado
 
-### Completar Issue Actual
+## Proceso de Uso Profesional de Workflows
 
-```
-1. Actualiza estado:
-   @linear update issue ISSUE_ID --state "Done"
-2. Añade comentario:
-   @linear create comment ISSUE_ID "Completado: [resumen]"
-```
+### Paso 1: Flujos de Trabajo Básicos (Esenciales)
 
-### Revisar Issues Pendientes
+**⚠️ REGLA CRÍTICA: Estos flujos usan comandos de Cursor, NO comandos de bash:**
+
+#### Crear Issue desde Error
+
+**Problema:** Crear issues manualmente desde errores es lento y propenso a errores.
+
+**Solución:** Usa el comando de Cursor para crear issues profesionalmente:
 
 ```
-@linear list issues --assignee "me" --state "In Progress"
-```
-
-## Flujos de Trabajo con Agentes
-
-### Crear Issue con Contexto del Agente
-
-```
-Crea un issue en Linear con el título "[título]" para el equipo "[equipo]" 
-basándote en el error que estamos viendo en el código.
+Usa /create-issues para crear un issue de bug basándote en este error:
+[descripción del error]
 ```
 
 El agente:
-1. Analiza el código y el error
-2. Crea issue con contexto técnico completo
-3. Prioriza según severidad
-4. Asigna labels apropiados
+1. Usa el comando `/create-issues` que proporciona instrucciones paso a paso
+2. Usa herramientas MCP de Linear para crear el issue
+3. Añade estado, prioridad, labels y descripción completa
+4. Te proporciona el issue creado
 
-### Actualizar Issue desde Commit
+**Uso profesional:**
+- Usa `/create-issues` para crear issues profesionalmente
+- El agente usa herramientas MCP de Linear automáticamente
+- El issue se crea con toda la información necesaria
 
-```
-Basándome en este commit, actualiza el issue ISSUE_ID con un comentario 
-describiendo los cambios realizados.
-```
+#### Completar Issue Actual
 
-El agente:
-1. Identifica el issue relacionado
-2. Actualiza estado si corresponde
-3. Añade comentario con hash del commit
-4. Incluye resumen de cambios
+**Problema:** Completar issues manualmente es lento y puede olvidar pasos.
 
-### Buscar Issues Relacionados
+**Solución:** Usa el comando de Cursor para completar issues profesionalmente:
 
 ```
-Busca issues relacionados con "[término]" y muéstrame los que están abiertos.
+Usa /complete-issues para completar el issue DAW-27 profesionalmente.
 ```
 
 El agente:
-1. Busca issues similares
-2. Filtra por estado abierto
-3. Proporciona resumen
-4. Sugiere actualizar issues existentes si aplica
+1. Usa el comando `/complete-issues` que proporciona instrucciones paso a paso
+2. Usa herramientas MCP de Linear para obtener y actualizar el issue
+3. Implementa el código necesario
+4. Crea Pull Request si es necesario
+5. Mueve el issue a "In Review"
 
-## Flujos de Trabajo de Desarrollo
+**Uso profesional:**
+- Usa `/complete-issues` para completar issues profesionalmente
+- El agente usa herramientas MCP de Linear automáticamente
+- El proceso incluye implementación, PR y revisión
 
-### Iniciar Trabajo en Issue
+#### Revisar Issues Pendientes
 
-```
-1. Obtener issue:
-   @linear get issue ISSUE_ID
-2. Actualizar estado:
-   @linear update issue ISSUE_ID --state "In Progress"
-3. Añadir comentario:
-   @linear create comment ISSUE_ID "Empezando a trabajar"
-```
+**Problema:** Revisar issues manualmente es lento y puede pasar por alto detalles.
 
-### Completar Trabajo en Issue
+**Solución:** Usa el comando de Cursor para revisar issues profesionalmente:
 
 ```
-1. Actualizar estado:
-   @linear update issue ISSUE_ID --state "Done"
-2. Añadir comentario:
-   @linear create comment ISSUE_ID "Completado: [resumen de cambios]"
-3. Incluir referencia a commit si aplica
+Usa /review-issues para revisar el issue DAW-27 que está en "In Review".
 ```
 
-### Crear Issue desde Bug Encontrado
+El agente:
+1. Usa el comando `/review-issues` que proporciona instrucciones paso a paso
+2. Usa herramientas MCP de Linear para obtener el issue
+3. Revisa el código y Pull Request
+4. Verifica criterios de aceptación
+5. Aprueba o solicita cambios
+
+**Uso profesional:**
+- Usa `/review-issues` para revisar issues profesionalmente
+- El agente usa herramientas MCP de Linear automáticamente
+- El proceso incluye revisión completa de código y PR
+
+### Paso 2: Flujos de Trabajo con Combinación de Comandos (Avanzados)
+
+**⚠️ REGLA CRÍTICA: Puedes combinar comandos para crear flujos personalizados:**
+
+#### Crear y Completar Issue
+
+**Problema:** Crear y completar issues por separado es lento.
+
+**Solución:** Combina comandos para crear flujos personalizados:
 
 ```
-1. Analizar el bug
-2. Crear issue:
-   @linear create issue "bug: [descripción]" \
-     --team "Engineering" \
-     --priority "[según severidad]" \
-     --labels "bug,[área]"
-3. Añadir descripción técnica completa
+Crea un issue para implementar autenticación usando /create-issues, 
+y luego usa /complete-issues para implementarlo completamente.
 ```
 
-## Flujos de Trabajo de Revisión
+El agente:
+1. Usa `/create-issues` para crear el issue profesionalmente
+2. Usa herramientas MCP de Linear para crear el issue
+3. Usa `/complete-issues` para implementar el código
+4. Usa herramientas MCP de Linear para actualizar el issue
+5. Crea Pull Request y mueve a "In Review"
 
-### Revisar Código y Crear Issues
+**Uso profesional:**
+- Combina comandos según tus necesidades
+- Crea flujos personalizados que usen múltiples comandos
+- El agente usa herramientas MCP automáticamente
 
-```
-1. Revisar código proporcionado
-2. Identificar problemas (bugs, vulnerabilidades, mejoras)
-3. Para cada problema, crear issue:
-   @linear create issue "bug: [problema]" \
-     --description "[ubicación, descripción técnica, impacto]"
-4. Priorizar según severidad
-```
+#### Listar y Revisar Issues
 
-### Verificar Fix de Bug
+**Problema:** Listar y revisar issues manualmente es lento.
 
-```
-1. Buscar issue relacionado:
-   @linear search issues "[descripción del bug]"
-2. Verificar que el fix esté implementado
-3. Actualizar issue:
-   @linear update issue ISSUE_ID --state "Done"
-   @linear create comment ISSUE_ID "Fix verificado en [commit]"
-```
-
-## Flujos de Trabajo de Project Management
-
-### Generar Reporte de Sprint
+**Solución:** Combina comandos para crear flujos personalizados:
 
 ```
-1. Listar issues del sprint:
-   @linear list issues --team "[equipo]" --created-after "[fecha inicio]"
-2. Analizar:
-   - Issues completados
-   - Issues en progreso
-   - Issues bloqueados
-3. Generar resumen con sugerencias
+Lista mis issues en progreso y luego usa /review-issues para revisar el primero.
 ```
 
-### Reasignar Tareas
+El agente:
+1. Usa herramientas MCP de Linear para listar issues
+2. Usa `/review-issues` para revisar el issue seleccionado
+3. Usa herramientas MCP de Linear para actualizar el issue
+
+**Uso profesional:**
+- Combina comandos para flujos complejos
+- Deja que el agente use herramientas MCP automáticamente
+- Crea flujos personalizados según necesidades
+
+### Paso 3: Flujos de Trabajo de Desarrollo (Profesionales)
+
+**⚠️ REGLA CRÍTICA: Estos flujos usan comandos de Cursor y herramientas MCP:**
+
+#### Iniciar Trabajo en Issue
+
+**Problema:** Iniciar trabajo sin actualizar estado dificulta tracking.
+
+**Solución:** Usa el comando de Cursor para iniciar trabajo profesionalmente:
 
 ```
-1. Analizar carga de trabajo:
-   @linear list issues --assignee "[usuario]"
-2. Identificar desbalances
-3. Reasignar:
-   @linear update issue ISSUE_ID --assignee "[nuevo asignado]"
+Usa /complete-issues para empezar a trabajar en el issue DAW-27.
 ```
 
-## Consejos
+El agente:
+1. Usa el comando `/complete-issues` que proporciona instrucciones paso a paso
+2. Usa herramientas MCP de Linear para obtener el issue
+3. Actualiza el estado a "In Progress"
+4. Crea branch y Pull Request si es necesario
+5. Comienza la implementación
 
-- Guarda workflows comunes en `.cursorrules`
-- Personaliza workflows según necesidades del proyecto
-- Combina workflows para procesos complejos
-- Usa agentes para automatizar workflows repetitivos
+**Uso profesional:**
+- Usa `/complete-issues` para iniciar trabajo profesionalmente
+- El agente usa herramientas MCP de Linear automáticamente
+- El proceso incluye actualización de estado y creación de branch
 
+#### Completar Trabajo en Issue
+
+**Problema:** Completar trabajo sin documentar dificulta tracking y revisión.
+
+**Solución:** Usa el comando de Cursor para completar trabajo profesionalmente:
+
+```
+Usa /complete-issues para completar el issue DAW-27 completamente.
+```
+
+El agente:
+1. Usa el comando `/complete-issues` que proporciona instrucciones paso a paso
+2. Usa herramientas MCP de Linear para obtener el issue
+3. Implementa el código necesario
+4. Crea Pull Request
+5. Mueve el issue a "In Review"
+6. Añade comentarios con contexto técnico
+
+**Uso profesional:**
+- Usa `/complete-issues` para completar trabajo profesionalmente
+- El agente usa herramientas MCP de Linear automáticamente
+- El proceso incluye implementación, PR y documentación
+
+#### Crear Issue desde Bug Encontrado
+
+**Problema:** Crear issues manualmente desde bugs es lento y propenso a errores.
+
+**Solución:** Usa el comando de Cursor para crear issues profesionalmente:
+
+```
+Usa /create-issues para crear un issue de bug basándote en este error:
+[descripción del bug]
+```
+
+El agente:
+1. Usa el comando `/create-issues` que proporciona instrucciones paso a paso
+2. Usa herramientas MCP de Linear para crear el issue
+3. Añade estado, prioridad, labels y descripción completa
+4. Te proporciona el issue creado
+
+**Uso profesional:**
+- Usa `/create-issues` para crear issues profesionalmente
+- El agente usa herramientas MCP de Linear automáticamente
+- El issue se crea con toda la información necesaria
+
+### Paso 4: Flujos de Trabajo de Revisión (Profesionales)
+
+**⚠️ REGLA CRÍTICA: Estos flujos usan comandos de Cursor y herramientas MCP:**
+
+#### Revisar Código y Crear Issues
+
+**Problema:** Revisar código manualmente y crear issues es lento y propenso a errores.
+
+**Solución:** Usa el comando de Cursor para crear issues profesionalmente:
+
+```
+Revisa este código y usa /create-issues para crear issues para cada problema encontrado.
+```
+
+El agente:
+1. Revisa el código proporcionado
+2. Identifica problemas (bugs, vulnerabilidades, mejoras)
+3. Usa `/create-issues` para crear issues profesionalmente
+4. Usa herramientas MCP de Linear para crear cada issue
+5. Añade estado, prioridad, labels y descripción completa
+
+**Uso profesional:**
+- Usa `/create-issues` para crear issues profesionalmente
+- El agente usa herramientas MCP de Linear automáticamente
+- Cada issue se crea con toda la información necesaria
+
+#### Verificar Fix de Bug
+
+**Problema:** Verificar fixes manualmente es lento y puede pasar por alto problemas.
+
+**Solución:** Usa el comando de Cursor para verificar fixes profesionalmente:
+
+```
+Usa /review-issues para verificar que el fix del bug está correctamente implementado.
+```
+
+El agente:
+1. Usa el comando `/review-issues` que proporciona instrucciones paso a paso
+2. Usa herramientas MCP de Linear para obtener el issue
+3. Verifica que el fix esté implementado
+4. Revisa el código y Pull Request
+5. Actualiza el issue apropiadamente
+
+**Uso profesional:**
+- Usa `/review-issues` para verificar fixes profesionalmente
+- El agente usa herramientas MCP de Linear automáticamente
+- El proceso incluye verificación completa
+
+## Integración con Comandos FUNCIONALES
+
+**⚠️ IMPORTANTE: Estos workflows usan los comandos FUNCIONALES de Linear:**
+
+**Referencias a comandos FUNCIONALES:**
+- [Crear Issues](../../../.cursor/commands/create-issues.md) - Comando `/create-issues` que usa herramientas MCP de Linear
+- [Completar Issues](../../../.cursor/commands/complete-issues.md) - Comando `/complete-issues` que usa herramientas MCP de Linear
+- [Revisar Issues](../../../.cursor/commands/review-issues.md) - Comando `/review-issues` que usa herramientas MCP de Linear
+- [Crear Proyectos](../../../.cursor/commands/create-projects.md) - Comando que usa herramientas MCP de Linear
+- [Listar y Buscar](../../../.cursor/commands/list-search.md) - Comando que usa herramientas MCP de Linear
+
+**Cuándo usar cada uno:**
+- **Workflows (este documento)**: Para flujos de trabajo rápidos y comunes
+- **Comandos FUNCIONALES**: Para procesos completos y trabajo profesional
+
+## Checklist de Profesionalismo
+
+### ⚠️ Al Usar Workflows
+
+- [ ] ¿He identificado el workflow apropiado para mi tarea?
+- [ ] ¿Estoy usando comandos de Cursor (`/create-issues`, etc.) para procesos completos?
+- [ ] ¿Estoy dejando que el agente use herramientas MCP automáticamente?
+- [ ] ¿Estoy combinando comandos cuando es necesario?
+
+### Antes de Ejecutar Workflow
+
+- [ ] ¿He revisado el workflow completamente?
+- [ ] ¿Tengo el contexto necesario para ejecutar el workflow?
+- [ ] ¿He verificado que el workflow es apropiado para mi tarea?
+
+## Consejos Finales
+
+1. **⚠️ Usa comandos de Cursor** - Para procesos completos y profesionales
+2. **Combina comandos** - Crea flujos personalizados que usen múltiples comandos
+3. **Deja que el agente use MCP** - Las herramientas MCP se usan automáticamente cuando es necesario
+4. **Crea issues completos** - Siempre incluye estado, prioridad, labels y descripción
+5. **Documenta el trabajo** - Añade comentarios con contexto técnico
+6. **Integra con comandos FUNCIONALES** - Para procesos completos y trabajo profesional
+
+---
+_Hecho por Cursor_
