@@ -6,32 +6,16 @@ Guía rápida para configurar el MCP (Model Context Protocol) de Linear en Curso
 
 - Cursor instalado
 - Cuenta de Linear activa
-- Token de API de Linear
 
 ## Pasos de Configuración
 
-### 1. Obtener Token de Linear
-
-1. Ve a Linear → Settings → API
-2. Genera un nuevo Personal API Key
-3. Copia el token (solo se muestra una vez)
-
-### 2. Instalar MCP de Linear
+### Instalar MCP de Linear
 
 1. Ve al [directorio de MCPs de Cursor](https://cursor.com/docs/context/mcp/directory)
 2. Busca "Linear" en la lista de MCPs disponibles
 3. Haz clic en el botón de instalación para añadir automáticamente el MCP de Linear
 
-El MCP se configurará automáticamente. Solo necesitarás añadir tu token de API en el siguiente paso.
-
-### 3. Configurar Token de API
-
-Una vez instalado el MCP, necesitas configurar tu token de Linear:
-
-1. Abre la configuración de Cursor (Settings)
-2. Navega a **Features** → **Model Context Protocol**
-3. Busca la configuración de "Linear" y añade tu token:
-   - En el campo `LINEAR_API_KEY`, pega el token que copiaste en el paso 1
+El MCP se configurará automáticamente. Cursor manejará el login automáticamente a través de un login en la web cuando instales el MCP desde el directorio de MCPs. **No necesitas obtener ni configurar ningún token manualmente.**
 
 ## Verificación
 
@@ -44,7 +28,7 @@ Una vez instalado el MCP, necesitas configurar tu token de Linear:
 
 ### El MCP no se conecta
 
-- Verifica que el token sea correcto
+- Verifica que el login se haya completado correctamente en la web
 - Revisa que el path de configuración sea correcto
 - Reinicia Cursor completamente
 
