@@ -9,310 +9,149 @@
 > - ✅ [Revisar Issues](../../../.cursor/commands/review-issues.md)
 > - ✅ [Crear Proyectos](../../../.cursor/commands/create-projects.md)
 > - ✅ [Listar y Buscar](../../../.cursor/commands/list-search.md)
+>     
+>     Estos comandos se activan en tu proyecto simplemente poniendo:
+>     `/el-comando`
+>     Por ejemplo: `/create-issues`, `/complete-issues`, `/review-issues`
 
 # Variables Útiles
 
-Guía profesional de variables y parámetros especiales para usar en comandos de Linear y agentización, diseñada para simplificar y acelerar el trabajo.
+Guía profesional para recordar usar estados y características al crear issues en Linear, asegurando que los issues no se creen vacíos.
 
-## Filosofía: Simplificar con Variables
+## Filosofía: Crear Issues Completos
 
-Las variables especiales **simplifican y aceleran** comandos. Actúa como un **desarrollador profesional** que:
+**⚠️ REGLA CRÍTICA: Los issues deben crearse con toda la información necesaria, NO vacíos:**
 
-1. **Usa variables especiales** para simplificar comandos
-2. **Memoriza variables frecuentes** para uso diario
-3. **Combina variables** para comandos más expresivos
-4. **Documenta variables personalizadas** para referencia
-5. **Aprovecha variables predefinidas** cuando sea posible
+Cuando crees issues en Linear, **NO** los dejes vacíos. Actúa como un **desarrollador profesional** que:
 
-## Proceso de Uso Profesional de Variables
+1. **Usa estados apropiados** al crear issues
+2. **Asigna prioridades** según la importancia
+3. **Añade labels** para mejor organización
+4. **Asigna a usuarios** cuando sea apropiado
+5. **Añade descripciones completas** con contexto técnico
 
-### Paso 1: Variables de Usuario (Esenciales)
+## Proceso de Uso Profesional
 
-**⚠️ REGLA CRÍTICA: Estas variables son las MÁS USADAS - memorízalas primero:**
+### Paso 1: Estados de Issues
 
-#### Usar "me" como Assignee
+**⚠️ REGLA CRÍTICA: Siempre asigna un estado apropiado al crear issues:**
 
-**Problema:** Referencias largas a usuarios ralentizan comandos.
+#### Estados Disponibles
 
-**Solución:** La palabra `"me"` se refiere automáticamente a tu usuario actual:
-
-```bash
-@linear list issues --assignee "me"
-@linear create issue "Título" --assignee "me"
-@linear update issue ISSUE_ID --assignee "me"
-```
-
-**Uso profesional:**
-- Usa `"me"` constantemente para auto-asignación
-- Simplifica comandos significativamente
-- Funciona en todos los comandos de Linear
-
-#### Referencias Especiales
-
-**Variables disponibles:**
-- `"me"` - Tu usuario actual (la más usada)
-- `"usuario@email.com"` - Usuario específico por email
-- `"Nombre Usuario"` - Usuario por nombre
+- `Backlog` - Pendiente, no iniciado
+- `Todo` - Por hacer, listo para empezar
+- `In Progress` - En progreso, trabajo activo
+- `In Review` - En revisión, esperando aprobación
+- `Done` - Completado
+- `Canceled` - Cancelado
 
 **Uso profesional:**
-- `"me"` es la variable más útil - úsala constantemente
-- Usa email o nombre cuando necesites referenciar otros usuarios
-- Documenta referencias especiales para referencia
+- Usa `Todo` para issues nuevos que están listos para empezar
+- Usa `In Progress` cuando empieces a trabajar en el issue
+- Usa `In Review` cuando el trabajo esté completo y esperando revisión
+- Usa `Done` solo cuando el issue esté completamente completado y aprobado
 
-### Paso 2: Fechas Relativas (Muy Útiles)
+### Paso 2: Prioridades
 
-**⚠️ REGLA CRÍTICA: Las fechas relativas son más útiles que fechas absolutas:**
+**⚠️ REGLA CRÍTICA: Siempre asigna una prioridad apropiada:**
 
-#### Formatos ISO 8601
+#### Prioridades Disponibles
 
-**Problema:** Fechas absolutas requieren actualización constante.
-
-**Solución:** Usa duraciones ISO 8601 para fechas relativas:
-
-- `-P1D` - Último día (Past 1 Day)
-- `-P7D` - Última semana (Past 7 Days)
-- `-P30D` - Último mes (Past 30 Days)
-- `-P1W` - Última semana (Past 1 Week)
-- `-P1M` - Último mes (Past 1 Month)
-
-**Ejemplos de uso:**
-```bash
-@linear list issues --created-after "-P1D"
-@linear list issues --created-after "-P7D"
-@linear list issues --updated-after "-P30D"
-```
-
-**Uso profesional:**
-- Las fechas relativas se adaptan automáticamente
-- No requieren actualización constante
-- Son más expresivas que fechas absolutas
-
-#### Fechas Absolutas
-
-**Cuándo usar:** Para fechas específicas o rangos históricos:
-
-```bash
-@linear list issues --created-after "2025-01-01"
-@linear list issues --due-before "2025-12-31"
-```
-
-**Formato:** `YYYY-MM-DD`
-
-**Uso profesional:**
-- Usa fechas absolutas para rangos históricos específicos
-- Usa fechas relativas para rangos dinámicos
-- Combina ambos según necesidades
-
-### Paso 3: Prioridades (Importantes)
-
-**⚠️ REGLA CRÍTICA: Las prioridades correctas mejoran la gestión de trabajo:**
-
-#### Valores de Prioridad
-
-**Variables disponibles:**
 - `Urgent` - Urgente (solo bugs críticos que bloquean producción)
 - `High` - Alta (features importantes o bugs significativos)
 - `Normal` - Normal (por defecto, trabajo regular)
 - `Low` - Baja (mejoras menores)
 
-**Ejemplos:**
-```bash
-@linear create issue "Título" --priority "Urgent"
-@linear update issue ISSUE_ID --priority "High"
-@linear list issues --priority "High"
-```
-
 **Uso profesional:**
-- Usa prioridades apropiadamente
 - No marques todo como Urgent
+- Usa prioridades apropiadamente según la importancia
 - Revisa prioridades regularmente
 
-### Paso 4: Estados (Fundamentales)
+### Paso 3: Labels
 
-**⚠️ REGLA CRÍTICA: Los estados correctos permiten tracking preciso:**
-
-#### Estados Comunes
-
-**Variables disponibles:**
-- `Backlog` - Pendiente
-- `Todo` - Por hacer
-- `In Progress` - En progreso
-- `In Review` - En revisión
-- `Done` - Completado
-- `Canceled` - Cancelado
-
-**Ejemplos:**
-```bash
-@linear create issue "Título" --state "Todo"
-@linear update issue ISSUE_ID --state "In Progress"
-@linear list issues --state "Done"
-```
-
-**Uso profesional:**
-- Actualiza estados inmediatamente al cambiar
-- Usa estados consistentemente según tu flujo
-- Consulta [Completar Issues](../../../.cursor/commands/complete-issues.md) para proceso completo
-
-### Paso 5: Labels (Organización)
-
-**⚠️ REGLA CRÍTICA: Los labels consistentes mejoran organización y búsqueda:**
-
-#### Uso de Labels
-
-**Problema:** Labels inconsistentes dificultan búsqueda y filtrado.
-
-**Solución:** Separa múltiples labels con comas:
-
-```bash
-@linear create issue "Título" --labels "bug,frontend,urgent"
-@linear update issue ISSUE_ID --labels "bug,hotfix"
-@linear list issues --label "bug"
-```
+**⚠️ REGLA CRÍTICA: Usa labels para mejor organización:**
 
 #### Labels Comunes
 
-**Convenciones recomendadas:**
 - **Tipos**: `bug`, `feature`, `refactor`, `docs`, `chore`
 - **Áreas**: `frontend`, `backend`, `api`, `database`
 - **Severidad**: `urgent`, `high-priority`, `low-priority`
 
 **Uso profesional:**
-- Establece convenciones de labels al inicio del proyecto
-- Usa máximo 5 labels por issue
+- Usa labels consistentemente según convenciones del proyecto
 - Combina tipos con áreas para mejor organización
+- Usa máximo 5 labels por issue
 
-### Paso 6: Parámetros de Búsqueda (Avanzados)
+### Paso 4: Asignación
 
-**⚠️ REGLA CRÍTICA: Los parámetros de búsqueda permiten filtrado preciso:**
+**⚠️ REGLA CRÍTICA: Asigna issues a usuarios apropiados:**
 
-#### Ordenamiento
+#### Asignación
 
-**Variables disponibles:**
-- `createdAt` - Ordenar por fecha de creación
-- `updatedAt` - Ordenar por fecha de actualización
-
-**Ejemplos:**
-```bash
-@linear list issues --order-by "createdAt"
-@linear list issues --order-by "updatedAt"
-```
+- Asigna a usuarios específicos cuando sea apropiado
+- Usa `"me"` para auto-asignación
+- Deja sin asignar si no está claro quién debe trabajar en el issue
 
 **Uso profesional:**
-- Usa `updatedAt` para ver issues más recientes
-- Usa `createdAt` para ver issues más antiguos
-- Combina con otros filtros para búsquedas precisas
+- Asigna issues cuando sepas quién debe trabajar en ellos
+- Usa auto-asignación cuando vayas a trabajar en el issue tú mismo
+- Reasigna si es necesario durante el desarrollo
 
-#### Límites
+### Paso 5: Descripciones Completas
 
-**Problema:** Listas muy largas dificultan revisión.
+**⚠️ REGLA CRÍTICA: Añade descripciones completas con contexto técnico:**
 
-**Solución:** Usa límites para controlar resultados:
+#### Información a Incluir
 
-```bash
-@linear list issues --limit 50
-```
-
-**Por defecto:** 50, **Máximo:** 250
-
-**Uso profesional:**
-- Usa límites apropiados según necesidades
-- Aumenta límite solo cuando sea necesario
-- Combina con filtros para resultados más precisos
-
-### Paso 7: Scope para Issues Recurrentes (Especiales)
-
-**⚠️ REGLA CRÍTICA: El scope correcto es crucial para issues recurrentes:**
-
-#### Opciones de Scope
-
-**Variables disponibles:**
-- `thisEventOnly` - Solo este evento
-- `thisAndFollowing` - Este y siguientes
-- `all` - Todos los eventos
-
-**Ejemplos:**
-```bash
-@linear update issue ISSUE_ID --state "Done" --scope "thisEventOnly"
-@linear update issue ISSUE_ID --scope "thisAndFollowing"
-```
+- Contexto técnico completo
+- Pasos para reproducir (si es un bug)
+- Comportamiento esperado vs actual
+- Código relevante
+- Referencias a archivos
 
 **Uso profesional:**
-- Usa `thisEventOnly` para actualizar solo un evento específico
-- Usa `thisAndFollowing` para actualizar desde un evento en adelante
-- Usa `all` con precaución - afecta todos los eventos
+- Incluye contexto técnico suficiente
+- Añade ejemplos cuando sea útil
+- Referencia código y archivos relevantes
 
 ## Integración con Comandos FUNCIONALES
 
-**⚠️ IMPORTANTE: Estas variables funcionan perfectamente con los comandos FUNCIONALES de Linear:**
+**⚠️ IMPORTANTE: Usa estos recordatorios al usar los comandos FUNCIONALES de Linear:**
 
 **Referencias a comandos FUNCIONALES:**
-- [Crear Issues](../../../.cursor/commands/create-issues.md) - Usa estas variables al crear issues
-- [Completar Issues](../../../.cursor/commands/complete-issues.md) - Aplica estas variables al completar issues
-- [Revisar Issues](../../../.cursor/commands/review-issues.md) - Usa estas variables al revisar issues
-- [Listar y Buscar](../../../.cursor/commands/list-search.md) - Aprovecha estas variables para búsquedas avanzadas
+- [Crear Issues](../../../.cursor/commands/create-issues.md) - Usa estados, prioridades, labels y descripciones completas al crear issues
+- [Completar Issues](../../../.cursor/commands/complete-issues.md) - Actualiza estados apropiadamente durante el proceso
+- [Revisar Issues](../../../.cursor/commands/review-issues.md) - Verifica que los issues tengan toda la información necesaria
 
 **Cuándo usar cada uno:**
-- **Variables (este documento)**: Para simplificar y acelerar comandos
-- **Comandos FUNCIONALES**: Para procesos completos y trabajo profesional
-
-## Flujos de Trabajo con Variables
-
-### Flujo 1: Listar Mis Issues Recientes
-
-```bash
-@linear list issues --assignee "me" --created-after "-P7D" --state "In Progress"
-```
-
-**Variables usadas:**
-- `"me"` - Mis issues
-- `-P7D` - Última semana
-- `"In Progress"` - Estado
-
-### Flujo 2: Crear Issue Urgente
-
-```bash
-@linear create issue "bug: Critical error" --assignee "me" --priority "Urgent" --labels "bug,critical"
-```
-
-**Variables usadas:**
-- `"me"` - Auto-asignar
-- `"Urgent"` - Prioridad
-- `"bug,critical"` - Labels
-
-### Flujo 3: Actualizar Issue a Revisión
-
-```bash
-@linear update issue ISSUE_ID --state "In Review" --assignee "me"
-```
-
-**Variables usadas:**
-- `"In Review"` - Estado
-- `"me"` - Reasignar
+- **Estados**: Al crear issues y durante el proceso de desarrollo
+- **Prioridades**: Al crear issues para indicar importancia
+- **Labels**: Al crear issues para mejor organización
+- **Descripciones**: Siempre al crear issues para proporcionar contexto
 
 ## Checklist de Profesionalismo
 
-### ⚠️ Al Usar Variables
+### ⚠️ Al Crear Issues
 
-- [ ] ¿Estoy usando `"me"` para auto-asignación cuando es apropiado?
-- [ ] ¿Estoy usando fechas relativas (`-P1D`) en lugar de fechas absolutas cuando es posible?
-- [ ] ¿Estoy usando prioridades apropiadamente?
-- [ ] ¿Estoy usando estados consistentemente?
-- [ ] ¿Estoy usando labels según convenciones del proyecto?
+- [ ] ¿He asignado un estado apropiado?
+- [ ] ¿He asignado una prioridad apropiada?
+- [ ] ¿He añadido labels apropiados?
+- [ ] ¿He asignado a un usuario apropiado?
+- [ ] ¿He añadido una descripción completa con contexto técnico?
 
-### Antes de Crear Issue
+### Antes de Completar Issues
 
-- [ ] ¿Estoy usando `"me"` para auto-asignación?
-- [ ] ¿Estoy usando prioridad apropiada?
-- [ ] ¿Estoy usando labels según convenciones?
-- [ ] ¿Estoy usando estado inicial apropiado?
+- [ ] ¿He actualizado el estado apropiadamente?
+- [ ] ¿He añadido comentarios con contexto técnico?
+- [ ] ¿He incluido referencias a commits y PRs?
 
 ## Consejos Finales
 
-1. **⚠️ Memoriza primero las esenciales** - `"me"`, `-P1D`, estados y prioridades son las más usadas
-2. **Usa fechas relativas** - Son más útiles que fechas absolutas
-3. **Combina variables** - Los comandos más expresivos combinan múltiples variables
-4. **Sigue convenciones** - Usa labels y prioridades según convenciones del proyecto
-5. **Documenta personalizaciones** - Guarda variables personalizadas para referencia
+1. **⚠️ Nunca crees issues vacíos** - Siempre incluye estado, prioridad, labels y descripción
+2. **Usa estados apropiadamente** - Indica claramente el estado del issue
+3. **Asigna prioridades correctamente** - No marques todo como Urgent
+4. **Usa labels consistentemente** - Sigue convenciones del proyecto
+5. **Añade descripciones completas** - Proporciona contexto técnico suficiente
 6. **Integra con comandos FUNCIONALES** - Para procesos completos y trabajo profesional
 
 ---

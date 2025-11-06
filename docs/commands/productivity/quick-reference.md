@@ -9,314 +9,221 @@
 > - ✅ [Revisar Issues](../../../.cursor/commands/review-issues.md)
 > - ✅ [Crear Proyectos](../../../.cursor/commands/create-projects.md)
 > - ✅ [Listar y Buscar](../../../.cursor/commands/list-search.md)
+>     
+>     Estos comandos se activan en tu proyecto simplemente poniendo:
+>     `/el-comando`
+>     Por ejemplo: `/create-issues`, `/complete-issues`, `/review-issues`
 
 # Referencia Rápida de Comandos
 
-Guía profesional de referencia rápida para comandos esenciales de Linear y agentización, diseñada para consulta rápida durante el desarrollo.
+Guía profesional de referencia rápida para comandos de Cursor y herramientas MCP de Linear.
 
-## Filosofía: Referencia Rápida Eficiente
+## Filosofía: Entender la Diferencia
 
-Una referencia rápida debe ser **concisa pero completa**. Actúa como un **desarrollador profesional** que:
+**⚠️ REGLA CRÍTICA: Es fundamental entender la diferencia entre comandos de Cursor y herramientas MCP:**
 
-1. **Memoriza comandos frecuentes** para uso diario
-2. **Consulta rápidamente** comandos menos usados
-3. **Combina comandos** para flujos de trabajo complejos
-4. **Usa aliases mentales** para acelerar el trabajo
-5. **Referencia comandos FUNCIONALES** cuando sea necesario
+### Comandos de Cursor
+
+Los **comandos de Cursor** son **prompts rápidos** que se activan escribiendo `/` seguido del nombre del comando. Son archivos Markdown en `.cursor/commands/` que proporcionan instrucciones al agente de IA.
+
+**Ejemplos:**
+- `/create-issues` - Activa el comando para crear issues profesionalmente
+- `/complete-issues` - Activa el comando para completar issues profesionalmente
+- `/review-issues` - Activa el comando para revisar issues profesionalmente
+
+**Características:**
+- Se activan con `/nombre-comando`
+- Son prompts rápidos que guían al agente
+- Están en archivos `.md` en `.cursor/commands/`
+- Proporcionan instrucciones paso a paso al agente
+
+### Herramientas MCP (Model Context Protocol)
+
+Las **herramientas MCP** son funciones disponibles a través del protocolo MCP. El MCP de Linear proporciona herramientas (tools) que el agente puede usar, **NO son comandos de bash**.
+
+**Ejemplos:**
+- `@linear list issues` - Usa la herramienta MCP para listar issues
+- `@linear create issue` - Usa la herramienta MCP para crear un issue
+- `@linear update issue` - Usa la herramienta MCP para actualizar un issue
+
+**Características:**
+- Se usan con `@linear` seguido de la acción
+- Son herramientas/funciones disponibles a través del MCP
+- El agente las usa automáticamente cuando es necesario
+- Proporcionan acceso directo a la API de Linear
+
+### ¿Qué es MCP?
+
+**MCP (Model Context Protocol)** es un protocolo que permite a los agentes de IA acceder a herramientas y recursos externos. El MCP de Linear proporciona herramientas que permiten al agente interactuar con Linear directamente.
+
+**¿Qué hace el MCP de Linear?**
+- Proporciona herramientas para interactuar con Linear
+- Permite al agente crear, listar, actualizar issues
+- Permite al agente gestionar proyectos y equipos
+- Proporciona acceso a la API de Linear de forma segura
 
 ## Proceso de Uso Profesional
 
-### Paso 1: Comandos Rápidos de Linear (Esenciales)
+### Paso 1: Usar Comandos de Cursor
 
-**⚠️ REGLA CRÍTICA: Estos son los comandos MÁS USADOS - memorízalos primero:**
+**⚠️ REGLA CRÍTICA: Los comandos de Cursor son prompts rápidos que guían al agente:**
 
-#### Crear Issue
+#### Activar Comandos
 
-```bash
-@linear create issue "Título" --team "Equipo"
+Los comandos se activan escribiendo `/` seguido del nombre:
+
 ```
-
-**Parámetros comunes:**
-- `--assignee "me"` - Auto-asignar
-- `--priority "High"` - Prioridad
-- `--labels "bug,frontend"` - Labels
-- `--description "Descripción completa"` - Descripción
-
-**Uso profesional:**
-- Usa títulos descriptivos: `"bug: Login fails with OAuth2"`
-- Intuye labels apropiados basándote en el contexto
-- Añade descripciones completas con contexto técnico
-
-#### Listar Issues
-
-```bash
-@linear list issues --assignee "me"
-```
-
-**Filtros útiles:**
-- `--state "In Progress"` - Filtrar por estado
-- `--priority "Urgent"` - Filtrar por prioridad
-- `--label "bug"` - Filtrar por label
-- `--created-after "-P1D"` - Issues del último día
-
-#### Buscar Issues
-
-```bash
-@linear search issues "término"
+/create-issues
+/complete-issues
+/review-issues
 ```
 
 **Uso profesional:**
-- Busca antes de crear para evitar duplicados
-- Usa términos específicos para búsquedas precisas
+- Usa comandos de Cursor para procesos completos y profesionales
+- Los comandos proporcionan instrucciones paso a paso al agente
+- Los comandos pueden usar herramientas MCP cuando sea necesario
 
-#### Actualizar Issue
+#### Mezclar Comandos para Crear Prompts
 
-```bash
-@linear update issue ISSUE_ID --state "Done"
-```
+**⚠️ REGLA CRÍTICA: Puedes mezclar comandos para crear prompts personalizados:**
 
-**Parámetros comunes:**
-- `--state "In Progress"` - Cambiar estado
-- `--assignee "me"` - Reasignar
-- `--priority "High"` - Cambiar prioridad
-- `--labels "bug,hotfix"` - Actualizar labels
-
-#### Añadir Comentario
-
-```bash
-@linear create comment ISSUE_ID "Texto del comentario"
-```
-
-**Uso profesional:**
-- Añade comentarios con contexto técnico
-- Incluye referencias a commits o PRs cuando aplique
-- Documenta decisiones importantes
-
-### Paso 2: Aliases Mentales Útiles
-
-**⚠️ REGLA CRÍTICA: Los aliases mentales aceleran significativamente el trabajo:**
-
-#### Issues Míos
-
-```bash
-@linear list issues --assignee "me"
-```
-
-**Alias mental:** `"mis issues"` → Lista todos mis issues
-
-#### Issues Urgentes
-
-```bash
-@linear list issues --priority "Urgent"
-```
-
-**Alias mental:** `"issues urgentes"` → Lista issues urgentes
-
-#### Issues de Hoy
-
-```bash
-@linear list issues --created-after "-P1D"
-```
-
-**Alias mental:** `"issues de hoy"` → Lista issues creados hoy
-
-#### Issues en Progreso
-
-```bash
-@linear list issues --state "In Progress" --assignee "me"
-```
-
-**Alias mental:** `"issues en progreso"` → Lista mis issues en progreso
-
-**Uso profesional:**
-- Crea tus propios aliases mentales para comandos frecuentes
-- Documenta aliases útiles para referencia futura
-
-### Paso 3: Comandos de Agentes Rápidos
-
-**⚠️ REGLA CRÍTICA: Los comandos de agentes permiten automatización avanzada:**
-
-#### Contextualizar Agente
+Puedes combinar comandos o crear prompts que usen múltiples comandos:
 
 ```
-Contextualiza este agente como [rol]: [descripción]
+Crea un issue usando /create-issues y luego completa el trabajo usando /complete-issues
 ```
 
-**Ejemplo:**
-```
-Contextualiza este agente como revisor de código: 
-Especializado en encontrar bugs y problemas de seguridad
-```
-
-#### Activar Rol
+O puedes crear prompts que combinen funcionalidades:
 
 ```
-Activa rol: [Nombre del Rol]
-```
-
-**Ejemplo:**
-```
-Activa rol: Project Manager
-```
-
-#### Ejecutar Workflow
-
-```
-Ejecuta workflow: [Nombre del Workflow]
-```
-
-**Ejemplo:**
-```
-Ejecuta workflow: Crear Issue desde Error
+Usa /create-issues para crear el issue y luego /complete-issues para implementarlo
 ```
 
 **Uso profesional:**
-- Contextualiza agentes apropiadamente para cada tarea
-- Usa roles especializados para tareas específicas
-- Crea workflows reutilizables para tareas repetitivas
+- Combina comandos según tus necesidades
+- Crea prompts personalizados que usen múltiples comandos
+- Los comandos pueden trabajar juntos para flujos complejos
 
-### Paso 4: Referencias de Comandos Completas
+### Paso 2: Usar Herramientas MCP de Linear
 
-**⚠️ REGLA CRÍTICA: Consulta estas referencias cuando necesites comandos específicos:**
+**⚠️ REGLA CRÍTICA: Las herramientas MCP se usan automáticamente por el agente, NO son comandos de bash:**
 
-#### Comandos de Linear
+#### Herramientas Disponibles
 
-| Acción | Comando | Ejemplo |
-|--------|---------|---------|
-| Crear | `@linear create issue "Título" --team "Equipo"` | `@linear create issue "bug: Login fails" --team "DAW"` |
-| Listar | `@linear list issues --assignee "me"` | `@linear list issues --assignee "me" --state "In Progress"` |
-| Buscar | `@linear search issues "término"` | `@linear search issues "autenticación"` |
-| Actualizar | `@linear update issue ID --state "Done"` | `@linear update issue DAW-27 --state "In Review"` |
-| Comentar | `@linear create comment ID "Texto"` | `@linear create comment DAW-27 "Completado"` |
+El MCP de Linear proporciona herramientas que el agente puede usar:
 
-#### Comandos de Agentes
-
-| Acción | Comando | Ejemplo |
-|--------|---------|---------|
-| Contextualizar | `Contextualiza este agente: [descripción]` | `Contextualiza este agente como revisor de código` |
-| Activar Rol | `Activa rol: [nombre]` | `Activa rol: Project Manager` |
-| Ejecutar Workflow | `Ejecuta workflow: [nombre]` | `Ejecuta workflow: Crear Issue desde Error` |
-
-### Paso 5: Combinaciones Útiles
-
-**⚠️ REGLA CRÍTICA: Las combinaciones de comandos permiten flujos de trabajo complejos:**
-
-#### Comandos Encadenados
-
-```bash
-# Obtener issue y actualizar estado
-@linear get issue ISSUE-123
-@linear update issue ISSUE-123 --state "In Progress"
-@linear create comment ISSUE-123 "Empezando trabajo"
-```
-
-#### Múltiples Comandos en Uno
-
-```
-Lista mis issues en progreso y crea un issue nuevo para la tarea X
-```
-
-**El agente ejecuta:**
-1. `@linear list issues --assignee "me" --state "In Progress"`
-2. `@linear create issue "Tarea X" --team "Equipo"`
+- **Crear issues**: El agente puede usar herramientas MCP para crear issues
+- **Listar issues**: El agente puede usar herramientas MCP para listar issues
+- **Actualizar issues**: El agente puede usar herramientas MCP para actualizar issues
+- **Gestionar proyectos**: El agente puede usar herramientas MCP para gestionar proyectos
 
 **Uso profesional:**
-- Encadena comandos para flujos de trabajo completos
-- Usa lenguaje natural para comandos complejos
-- Deja que el agente interprete y ejecute múltiples comandos
+- El agente usa las herramientas MCP automáticamente cuando es necesario
+- Puedes pedirle al agente que use herramientas MCP específicas
+- Recuerda que son herramientas MCP, no comandos de bash
 
-### Paso 6: Variables Especiales
+#### Ejemplo de Uso
 
-**⚠️ REGLA CRÍTICA: Las variables especiales simplifican comandos:**
+Cuando usas un comando como `/create-issues`, el agente:
+1. Lee las instrucciones del comando
+2. Usa las herramientas MCP de Linear necesarias
+3. Crea el issue usando las herramientas MCP
+4. Te proporciona el resultado
 
-#### Variables de Usuario
+**No necesitas escribir comandos de bash** - el agente usa las herramientas MCP automáticamente.
 
-- `"me"` - Referencia a tu usuario actual
-- `"usuario@email.com"` - Usuario específico por email
-- `"Nombre Usuario"` - Usuario por nombre
+### Paso 3: Crear Prompts Personalizados
 
-#### Fechas Relativas
+**⚠️ REGLA CRÍTICA: Puedes crear prompts que combinen comandos y herramientas MCP:**
 
-- `-P1D` - Último día (Past 1 Day)
-- `-P7D` - Última semana (Past 7 Days)
-- `-P30D` - Último mes (Past 30 Days)
+#### Ejemplo: Crear y Completar Issue
 
-#### Estados Comunes
+```
+Crea un issue para implementar autenticación usando /create-issues, 
+y luego usa /complete-issues para implementarlo completamente.
+```
 
-- `"Backlog"` - Pendiente
-- `"Todo"` - Por hacer
-- `"In Progress"` - En progreso
-- `"In Review"` - En revisión
-- `"Done"` - Completado
+El agente:
+1. Usa `/create-issues` para crear el issue profesionalmente
+2. Usa las herramientas MCP de Linear necesarias
+3. Usa `/complete-issues` para implementar el código
+4. Usa las herramientas MCP de Linear para actualizar el issue
 
-**Uso profesional:**
-- Usa `"me"` constantemente para auto-asignación
-- Las fechas relativas (`-P1D`) son más útiles que fechas absolutas
-- Combina variables para comandos más expresivos
+#### Ejemplo: Listar y Revisar Issues
+
+```
+Lista mis issues en progreso y luego usa /review-issues para revisar el primero.
+```
+
+El agente:
+1. Usa herramientas MCP de Linear para listar issues
+2. Usa `/review-issues` para revisar el issue seleccionado
+3. Usa las herramientas MCP de Linear necesarias
 
 ## Integración con Comandos FUNCIONALES
 
 **⚠️ IMPORTANTE: Esta referencia rápida complementa los comandos FUNCIONALES de Linear:**
 
 **Referencias a comandos FUNCIONALES:**
-- [Crear Issues](../../../.cursor/commands/create-issues.md) - Guía completa para crear issues profesionalmente
-- [Completar Issues](../../../.cursor/commands/complete-issues.md) - Proceso completo de completar issues
-- [Revisar Issues](../../../.cursor/commands/review-issues.md) - Revisión profesional de issues
-- [Crear Proyectos](../../../.cursor/commands/create-projects.md) - Creación de proyectos completos
-- [Listar y Buscar](../../../.cursor/commands/list-search.md) - Búsqueda avanzada de issues
+- [Crear Issues](../../../.cursor/commands/create-issues.md) - Comando `/create-issues` que usa herramientas MCP de Linear
+- [Completar Issues](../../../.cursor/commands/complete-issues.md) - Comando `/complete-issues` que usa herramientas MCP de Linear
+- [Revisar Issues](../../../.cursor/commands/review-issues.md) - Comando `/review-issues` que usa herramientas MCP de Linear
+- [Crear Proyectos](../../../.cursor/commands/create-projects.md) - Comando que usa herramientas MCP de Linear
+- [Listar y Buscar](../../../.cursor/commands/list-search.md) - Comando que usa herramientas MCP de Linear
 
 **Cuándo usar cada uno:**
-- **Referencia rápida (este documento)**: Para comandos simples y consulta rápida
-- **Comandos FUNCIONALES**: Para procesos completos y trabajo profesional
+- **Comandos de Cursor** (`/create-issues`, etc.): Para procesos completos y profesionales
+- **Herramientas MCP** (`@linear`): Se usan automáticamente por el agente cuando es necesario
 
 ## Flujos de Trabajo Rápidos
 
 ### Flujo 1: Crear Issue Rápido
 
 ```
-1. @linear create issue "Título" --team "Equipo" --assignee "me"
-2. Añadir descripción si es necesario
+Usa /create-issues para crear un issue de bug con toda la información necesaria.
 ```
 
-### Flujo 2: Actualizar Issue
+El agente usa el comando `/create-issues` y las herramientas MCP de Linear necesarias.
+
+### Flujo 2: Completar Issue
 
 ```
-1. @linear get issue ISSUE_ID
-2. @linear update issue ISSUE_ID --state "In Progress"
-3. @linear create comment ISSUE_ID "Comentario"
+Usa /complete-issues para completar el issue DAW-27 profesionalmente.
 ```
 
-### Flujo 3: Buscar y Actualizar
+El agente usa el comando `/complete-issues` y las herramientas MCP de Linear necesarias.
+
+### Flujo 3: Mezclar Comandos
 
 ```
-1. @linear search issues "término"
-2. Identificar issue relevante
-3. @linear update issue ISSUE_ID --state "Done"
+Crea un issue usando /create-issues y luego completa el trabajo usando /complete-issues.
 ```
+
+El agente combina ambos comandos y usa las herramientas MCP de Linear necesarias.
 
 ## Checklist de Profesionalismo
 
 ### ⚠️ Al Usar Comandos
 
-- [ ] ¿He memorizado los comandos esenciales?
-- [ ] ¿Estoy usando aliases mentales para acelerar?
-- [ ] ¿Estoy combinando comandos para flujos complejos?
-- [ ] ¿Estoy consultando comandos FUNCIONALES cuando es necesario?
+- [ ] ¿Entiendo la diferencia entre comandos de Cursor y herramientas MCP?
+- [ ] ¿Estoy usando comandos de Cursor (`/create-issues`, etc.) para procesos completos?
+- [ ] ¿Estoy dejando que el agente use herramientas MCP automáticamente?
+- [ ] ¿Estoy combinando comandos cuando es necesario?
 
-### Antes de Crear Issue
+### Antes de Crear Prompts
 
-- [ ] ¿He buscado issues similares para evitar duplicados?
-- [ ] ¿Estoy usando títulos descriptivos?
-- [ ] ¿Estoy añadiendo descripciones completas con contexto?
+- [ ] ¿He identificado qué comandos necesito?
+- [ ] ¿He considerado cómo combinar comandos para mi flujo?
+- [ ] ¿He dejado claro qué herramientas MCP pueden ser necesarias?
 
 ## Consejos Finales
 
-1. **⚠️ Memoriza primero los esenciales** - Crear, listar, actualizar son los más usados
-2. **Usa aliases mentales** - Acelera significativamente el trabajo
-3. **Combina comandos** - Los flujos complejos se simplifican con combinaciones
-4. **Consulta comandos FUNCIONALES** - Para procesos completos y trabajo profesional
-5. **Documenta tus aliases** - Guarda tus aliases mentales para referencia
-6. **Practica regularmente** - La memoria muscular se desarrolla con el uso
+1. **⚠️ Entiende la diferencia** - Comandos de Cursor son prompts rápidos, herramientas MCP son funciones
+2. **Usa comandos de Cursor** - Para procesos completos y profesionales
+3. **Combina comandos** - Crea prompts personalizados que usen múltiples comandos
+4. **Deja que el agente use MCP** - Las herramientas MCP se usan automáticamente cuando es necesario
+5. **Recuerda que MCP no es bash** - Son herramientas/funciones, no comandos de terminal
+6. **Integra con comandos FUNCIONALES** - Para procesos completos y trabajo profesional
 
 ---
 _Hecho por Cursor_
