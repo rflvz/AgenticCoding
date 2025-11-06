@@ -1,3 +1,21 @@
+> **⚠️⚠️⚠️ EXPERIMENTAL ⚠️⚠️⚠️**
+> 
+> **Este comando es EXPERIMENTAL y está en desarrollo. No confiar ciegamente.**
+> 
+> **⚠️ NOTA IMPORTANTE:** Este documento está en `docs/commands/productivity/` pero los atajos de teclado **NO son comandos de Cursor**. Los atajos de teclado deberían estar en una zona completamente distinta a los comandos. Este documento es **poco importante** o **no muy revisado** - úsalo solo como referencia básica.
+> 
+> **Para comandos FUNCIONALES, usa los comandos de Linear en `.cursor/commands/`:**
+> - ✅ [Inicializar Contexto del Proyecto](../../../.cursor/commands/initialize-project-context.md)
+> - ✅ [Crear Issues](../../../.cursor/commands/create-issues.md)
+> - ✅ [Completar Issues](../../../.cursor/commands/complete-issues.md)
+> - ✅ [Revisar Issues](../../../.cursor/commands/review-issues.md)
+> - ✅ [Crear Proyectos](../../../.cursor/commands/create-projects.md)
+> - ✅ [Listar y Buscar](../../../.cursor/commands/list-search.md)
+>     
+>     Estos comandos se activan en tu proyecto simplemente poniendo:
+>     `/el-comando`
+>     Por ejemplo: `/create-issues`, `/complete-issues`, `/review-issues`
+
 # Atajos de Teclado de Cursor
 
 Guía básica de atajos de teclado esenciales para trabajar eficientemente con Cursor. **NOTA: Este documento es poco importante o no muy revisado - úsalo solo como referencia básica.**

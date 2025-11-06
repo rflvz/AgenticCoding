@@ -1,7 +1,7 @@
 # Contexto del Proyecto AgenticCoding
 
-**Última actualización:** 2025-11-06  
-**Versión:** 1.1
+**Última actualización:** 2025-11-05  
+**Versión:** 1.0
 
 > **⚠️ IMPORTANTE:** Este documento es la fuente única de verdad para todos los comandos y agentes. Todos los comandos y agentes deben leer este documento para obtener contexto del proyecto y trabajo en Linear.
 
@@ -47,14 +47,13 @@ AgenticCoding/
 - **Fase:** Desarrollo activo
 - **Enfoque:** Documentación y mejora de comandos
 - **Prioridad:** Alta
-- **Branch Actual:** `feature/DAW-27-mejorar-comandos-experimentales-productivity`
 
 ## Información de Linear
 
 ### Equipo Principal
 
 - **Equipo:** DAW
-- **ID del Equipo:** `1edf0b57-2c5e-46e4-8d64-29b40a9a2905`
+- **ID del Equipo:** `1edf0b57-5c5e-4d4e-8d64-29b40a9a2905`
 - **URL:** https://linear.app/clasificadoria/team/DAW
 
 ### Proyectos Activos
@@ -63,20 +62,31 @@ AgenticCoding/
 
 - **ID:** `4e316246-3b26-437d-a4d3-bc2343f26e6f`
 - **Prioridad:** High
-- **Estado:** In Progress
-- **Lead:** Rafa
+- **Estado:** New
 - **Descripción:** Documentación y guías sobre la importancia y utilidades de agentizar con Linear en Cursor
 - **Objetivo:** Crear documentación profesional y completa que explique por qué es fundamental aprender a agentizar con Linear en Cursor, todas las utilidades prácticas de esta integración, y mejoras específicas para el programa AgenticCoding
 - **URL:** https://linear.app/clasificadoria/project/agentizacion-con-linear-en-cursor-cd1ee84c469f
 
+#### 2. Actividades FIFO
+
+- **ID:** `f31eae7a-888c-4bf9-bd06-4e8631686cff`
+- **Estado:** New
+- **Descripción:** Aplique el algoritmo SJF para las siguientes tablas Calcules los de espera y retorno
+
+#### 3. Entrega modelos físicos
+
+- **ID:** `3eafcd54-dc4e-4c71-8e9a-8770a816f283`
+- **Prioridad:** Urgent
+- **Estado:** New
+- **Descripción:** Debemos hacer modelos físicos en DDL. Debemos hacer los modelos en datamodeler oracle sql
+
 ### Issues Activos (En Progreso)
-### Issues Completados Recientemente
 
 #### DAW-21: Acceso centralizado a documento de contexto
 
 - **ID:** `89bd872e-5af4-4017-a69e-8080ae42a5b8`
 - **Prioridad:** High
-- **Estado:** Done ✅
+- **Estado:** In Progress
 - **Asignado:** Rafa
 - **Proyecto:** Agentización con Linear en Cursor
 - **Labels:** workflow, cursor, agentization, docs
@@ -88,7 +98,7 @@ AgenticCoding/
 
 - **ID:** `4ebb43ad-fb17-49a1-8c21-f018fc08be97`
 - **Prioridad:** High
-- **Estado:** Done ✅
+- **Estado:** In Progress
 - **Asignado:** Rafa
 - **Proyecto:** Agentización con Linear en Cursor
 - **Labels:** productivity, agentization, docs
@@ -99,19 +109,12 @@ AgenticCoding/
 ### Prioridades y Focos
 
 - **Alta Prioridad:** 
-  - Proyecto: Agentización con Linear en Cursor (In Progress)
-  - Issues completados: DAW-21 ✅, DAW-12 ✅
+  - DAW-21: Acceso centralizado a documento de contexto
+  - DAW-12: Mejora de productividad y eficiencia
+  - Proyecto: Agentización con Linear en Cursor
 
-- **Prioridad Media (En Progreso):**
-  - DAW-40: Epic: Parte 3 - Informe Final con Evidencias
-  - DAW-42: Documentar resultados del perfilado con capturas
-  - Proyecto: Perfilado de Programas en Java
-
-- **Prioridad Baja:**
-  - DAW-44: Crear comparativa con versión mejorada (opcional)
-
-- **Completado:**
-  - Entrega modelos físicos ✅
+- **Urgente:**
+  - Entrega modelos físicos (proyecto separado)
 
 ## Convenciones y Estándares
 
@@ -166,17 +169,13 @@ Ninguno identificado actualmente.
 
 ### Dependencias Entre Issues
 
-- **DAW-40** (Epic) contiene:
-  - DAW-42: Documentar resultados del perfilado con capturas
-  - DAW-44: Crear comparativa con versión mejorada (opcional)
-- **DAW-40** requiere: Epic: Parte 2 - Perfilado con NetBeans (DAW-35)
+- **DAW-21** bloquea mejoras futuras de contextualización de agentes y comandos
+- **DAW-12** depende de documentación general de agentización
 
 ## Próximos Pasos
 
-1. Completar DAW-40: Epic: Parte 3 - Informe Final con Evidencias
-   - DAW-42: Documentar resultados del perfilado con capturas
-   - DAW-44: Crear comparativa con versión mejorada (opcional)
-2. Continuar con proyecto: Agentización con Linear en Cursor
+1. Completar DAW-21: Acceso centralizado a documento de contexto
+2. Completar DAW-12: Mejora de productividad y eficiencia
 3. Actualizar documentación de comandos para referenciar este documento
 4. Crear workflows de actualización automática del documento de contexto
 
