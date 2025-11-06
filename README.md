@@ -64,7 +64,6 @@ Guía de referencia rápida para agentización profesional de código usando Cur
 - ⚠️ [Flujos de Trabajo](./docs/commands/agentization/agent-workflows.md) - Workflows que combinan agentización con Linear
 
 #### Productividad (EXPERIMENTALES)
-- ⚠️ [Atajos de Teclado](./docs/commands/productivity/keyboard-shortcuts.md) - Atajos de teclado de Cursor
 - ⚠️ [Referencia Rápida](./docs/commands/productivity/quick-reference.md) - Comandos rápidos y referencias esenciales
 - ⚠️ [Variables Útiles](./docs/commands/productivity/variables.md) - Variables y parámetros especiales
 - ⚠️ [Consejos de Productividad](./docs/commands/productivity/tips.md) - Consejos y técnicas para maximizar productividad

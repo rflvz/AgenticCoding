@@ -2,6 +2,10 @@
 
 Guía profesional para crear issues en Linear actuando como un project manager/programador experto.
 
+> **⚠️ IMPORTANTE:** Antes de usar este comando, lee el [documento de contexto del proyecto](../../project-context.md) para obtener información actualizada sobre el proyecto y trabajo en Linear. Este documento es la fuente única de verdad para contexto del proyecto. Si el documento no existe, usa el [comando de inicialización](./initialize-project-context.md) para crearlo.
+
+**⚠️⚠️⚠️ LEE ESTO PRIMERO: Este comando es SOLO para CREAR issues en Linear. NO implementes NADA. NO escribas código. NO trabajes en la tarea. Tu trabajo TERMINA cuando has creado los issues. ⚠️⚠️⚠️**
+
 ## ⚠️⚠️⚠️ REGLA CRÍTICA: Tu Trabajo es CREAR Issues, NO Implementar ⚠️⚠️⚠️
 
 **Cuando te piden "crear issues", usar el comando `/create-issues`, o cualquier variación:**
@@ -48,9 +52,11 @@ Cuando crees issues, **NO** solo uses el MCP de Linear. Actúa como un **project
 
 ## Proceso de Planificación Profesional
 
+**⚠️⚠️⚠️ RECUERDA EN CADA PASO: Estás CREANDO issues, NO implementando. Tu trabajo termina cuando creas los issues en Linear. ⚠️⚠️⚠️**
+
 ### Paso 1: Analizar la Tarea
 
-**⚠️ IMPORTANTE: Tu trabajo aquí es ANALIZAR para CREAR el issue, NO para implementarlo.**
+**⚠️⚠️⚠️ CRÍTICO: Tu trabajo aquí es ANALIZAR para CREAR el issue en Linear, NO para implementarlo. NO empieces a trabajar en la tarea. ⚠️⚠️⚠️**
 
 **ANTES de crear cualquier issue:**
 
@@ -59,6 +65,8 @@ Cuando crees issues, **NO** solo uses el MCP de Linear. Actúa como un **project
 3. **Identifica el alcance** - ¿Es simple o requiere división? (para planificar la creación de issues, no para implementar)
 
 ### Paso 2: Divide y Vencerás
+
+**⚠️ RECUERDA: Aquí divides para CREAR issues, NO para implementar. Tu trabajo termina cuando creas los issues.**
 
 **Si la tarea es grande o compleja:**
 
@@ -74,15 +82,30 @@ Una tarea es "grande" si:
    - Título: `feature: [Nombre]` o `epic: [Nombre]`
    - Descripción: Visión general, objetivos, alcance
    - Labels: Intuye labels apropiados (`feature`, `epic`, etc.)
+   - **Crear el issue en Linear usando `create_issue`**
+   - **NO implementar nada**
 
 2. **Crear Sub-issues (Issues Hijos)**
    - Divide en tareas de **1-3 días** cada una
    - Cada sub-issue debe ser **independiente cuando sea posible**
    - Usa `parentId` para crear jerarquía
+   - **Crear cada sub-issue en Linear usando `create_issue`**
+   - **NO implementar nada**
 
 **Herramientas:**
 - `create_issue` con `title`, `team`, `description`, `labels` (intuye labels)
 - Para sub-issues: `create_issue` con `parentId` (ID del issue padre)
+
+**⚠️⚠️⚠️ CRÍTICO: Una vez creados todos los issues en Linear y vinculados PRs (si hay repositorio), tu trabajo ha TERMINADO.**
+- ✅ Has terminado cuando has creado los issues en Linear
+- ✅ Has terminado cuando has creado PRs vacíos/draft y los has vinculado a los issues (si hay repositorio)
+- ❌ NO continúes con la implementación
+- ❌ NO escribas código
+- ❌ NO crees archivos de código
+- ❌ NO hagas commits con código
+- ❌ NO trabajes en la tarea
+
+**Si el usuario quiere que implementes, debe usar `/complete-issues` explícitamente.**
 
 ### Paso 3: Gestionar Dependencias
 
@@ -132,6 +155,8 @@ Una tarea es "grande" si:
    - Parámetros: `name` (requerido), `description`, `color` (hex), `teamId` (opcional)
 
 ### Paso 5: Crear Issues con Información Completa
+
+**⚠️⚠️⚠️ CRÍTICO: Este paso es CREAR los issues en Linear usando `create_issue`. NO implementes nada. NO escribas código. NO trabajes en la tarea. ⚠️⚠️⚠️**
 
 **Cuando crees un issue, incluye:**
 
@@ -312,6 +337,7 @@ Ejemplos:
 **Importante:** 
 - Intuye los labels basándote en tipo de tarea, área afectada y severidad.
 - **Intuye el proyecto** analizando el contexto del issue y buscando proyectos relacionados en Linear.
+- **NO implementes nada después de crear los issues**
 
 ### Gestionar Labels
 
@@ -349,12 +375,14 @@ Ejemplos:
 
 ## Checklist de Profesionalismo
 
+**⚠️⚠️⚠️ CRÍTICO: Este checklist es para CREAR issues. Una vez completado, tu trabajo ha terminado. NO implementes nada. ⚠️⚠️⚠️**
+
 Antes de crear un issue, verifica:
 
-- [ ] ¿Comprendo completamente la tarea?
-- [ ] ¿He aclarado todas las dudas necesarias?
-- [ ] ¿Es una tarea grande que requiere división?
-- [ ] ¿He identificado todas las dependencias?
+- [ ] ¿Comprendo completamente la tarea? (para crear el issue, no para implementarlo)
+- [ ] ¿He aclarado todas las dudas necesarias? (para crear el issue correctamente)
+- [ ] ¿Es una tarea grande que requiere división? (para crear múltiples issues, no para implementar)
+- [ ] ¿He identificado todas las dependencias? (para documentar en los issues)
 - [ ] ¿He intuido los labels apropiados? (crearlos si no existen)
 - [ ] ¿El título es descriptivo y claro?
 - [ ] ¿La descripción incluye toda la información necesaria?
@@ -368,6 +396,8 @@ Antes de crear un issue, verifica:
 - [ ] ⚠️ **¿He intentado implementar o escribir código?** (Si SÍ, detente. Eso es para `/complete-issues`)
 
 ## Consejos Finales
+
+**⚠️⚠️⚠️ LEE ESTOS CONSEJOS ANTES DE HACER CUALQUIER COSA: ⚠️⚠️⚠️**
 
 1. **⚠️⚠️⚠️ CRÍTICO: Tu trabajo es CREAR issues, NO implementarlos** 
    - Si te piden crear issues, crea los issues en Linear
@@ -391,7 +421,6 @@ Antes de crear un issue, verifica:
    - No continúes desde `/create-issues` hacia la implementación
    - Si el usuario te pide trabajar en la tarea, usa `/complete-issues` explícitamente
    - NO asumas que debes continuar después de crear issues
-
 4. **Nunca crees issues sin analizar primero** - Sé un project manager, no un robot
 5. **Siempre divide tareas grandes** - Divide y vencerás (para crear múltiples issues, no para implementar)
 6. **Gestiona dependencias proactivamente** - Identifica qué depende de qué (para documentar en los issues)
