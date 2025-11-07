@@ -1,4 +1,4 @@
-# Completar Issues Profesionalmente
+   # Completar Issues Profesionalmente
 
 Guía profesional para completar issues en Linear actuando como un programador/project manager experto. **NO solo marques el issue como "Done"**. Completa el trabajo de manera profesional, implementando la solución completa, trabajando con GitHub, poniéndolo en "In Review" para revisión, y verificando que todo esté correcto antes de marcar como "Done".
 
