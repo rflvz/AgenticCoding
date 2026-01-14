@@ -1,318 +1,356 @@
-# Listar y Buscar Issues como Project Manager Profesional
+---
+title: Guía para Listado y Recomendación de Issues en Linear
+tipo_tarea: workflow/agente
+---
 
-Guía profesional para listar, buscar y recomendar issues en Linear actuando como un project manager/programador experto.
+# Objetivo y Pasos Obligatorios
 
-> **⚠️ IMPORTANTE:** Antes de usar este comando, lee el [documento de contexto del proyecto](../../project-context.md) para obtener información actualizada sobre el proyecto y trabajo en Linear. Este documento es la fuente única de verdad para contexto del proyecto. Si el documento no existe, usa el [comando de inicialización](./initialize-project-context.md) para crearlo.
+Analizar, priorizar y recomendar issues de Linear mediante análisis estratégico del estado del proyecto, verificación de dependencias y evaluación de prioridades.
 
-## Filosofía: Actuar como Experto
+## Pasos Obligatorios
 
-Cuando listes y busques issues, **NO** solo uses el MCP de Linear para mostrar resultados. Actúa como un **project manager profesional** que:
+1. Verificar existencia de `../../project-context.md`. IF NO existe → ejecutar `./initialize-project-context.md`
+2. Inferir proyecto si no especificado: consultar `list_projects`, analizar contexto semántico, correlacionar términos clave
+3. Analizar estado del proyecto: listar issues por estado, mapear dependencias, evaluar prioridades
+4. Buscar issues candidatas usando `list_issues` con filtros apropiados
+5. Para cada candidata: obtener detalles con `get_issue`, verificar dependencias, evaluar viabilidad
+6. Calcular prioridad estratégica usando fórmula: `(5 - Prioridad_Base) + (Bloquea_Otros * 3) + (Critico_Produccion * 4) + (Deadline_Proximo * 2)`
+7. Generar recomendaciones con estructura definida
+8. IF confianza ≥ 9/10 AND todas las condiciones cumplen → actualizar estado a "Todo" y documentar con comentario
 
-1. **Analiza profundamente** el estado del proyecto
-2. **Prioriza estratégicamente** según dependencias y contexto
-3. **Recomienda inteligentemente** qué issues hacer primero
-4. **Gestiona el flujo de trabajo** moviendo issues a "Todo" cuando sea apropiado
-5. **Identifica bloqueadores** y dependencias críticas
-6. **⚠️ Intuye el proyecto** si el usuario no lo especifica - busca proyectos relacionados en Linear
+VERIFICAR: ¿Se completaron todos los pasos anteriores? [SI/NO]
+- IF NO → Repetir desde el paso faltante
+- IF SI → Continuar
 
-## Proceso de Análisis y Recomendación Profesional
+## Restricciones Absolutas
 
-### Paso 1: Analizar el Estado del Proyecto
+- NO mover issues a "Todo" sin confianza ≥ 9/10
+- NO recomendar issues con dependencias incompletas
+- NO actualizar estados sin verificación exhaustiva de dependencias
+- NO omitir documentación de acciones realizadas
+- NO mostrar resultados sin análisis estratégico previo
+- SI issue tiene `parentId` → verificar estado del padre es "Done"
+- SI descripción menciona dependencias → verificar cada una individualmente
+- SI confianza < 9/10 → solo recomendar, NO actualizar
 
-**ANTES de recomendar issues:**
+## Criterios para Mover a "Todo"
 
-1. **Obtener visión general del proyecto**
-   - Listar issues por estado para entender distribución del trabajo
-   - Identificar cuellos de botella
-   - Detectar issues bloqueados o bloqueadores
+Condiciones REQUERIDAS (todas deben cumplirse):
+- Todas las dependencias tienen estado "Done"
+- Issue tiene definición clara con criterios de aceptación explícitos
+- No existen bloqueos identificados
+- Prioridad es Urgent (1), High (2) o Normal (3)
+- Información disponible es suficiente para iniciar
+- Nivel de confianza ≥ 9/10
 
-2. **Analizar dependencias**
-   - Identificar issues padre y sus sub-issues
-   - Verificar qué issues dependen de otros
-   - Detectar issues listos para comenzar (dependencias completadas)
+Condiciones que IMPIDEN la actualización:
+- Dependencias críticas sin completar
+- Definición insuficiente o ambigua
+- Bloqueos sin resolver
+- Estado "Canceled" o "Duplicate"
+- Prioridad Low (4) sin justificación especial
 
-3. **Evaluar prioridades**
-   - Issues con prioridad Urgent o High
-   - Issues que bloquean a otros
-   - Issues con deadlines próximos
-   - Issues críticos para producción
+---
 
-4. **Intuir proyecto si no se especifica:**
-   - **⚠️ Si el usuario no especifica el proyecto, debes intuirlo**
-   - Busca proyectos relacionados usando `list_projects`
-   - Analiza el contexto de la búsqueda para identificar proyectos relevantes
-   - Si hay proyectos activos relacionados, úsalos como filtro
+# Proceso de Análisis
 
-5. **Aclarar contexto con el usuario si es necesario**
-   - ¿En qué área prefieres trabajar? (frontend, backend, api, etc.)
-   - ¿Qué tipo de trabajo prefieres? (features, bugs, refactor, docs)
-   - ¿Hay algún deadline o prioridad específica?
-   - ¿En qué proyecto específico? (si no está claro, intuir basándose en el contexto)
+## Análisis del Estado del Proyecto
 
-### Paso 2: Búsqueda y Filtrado Estratégico
+### Paso 1: Obtener Visión General
 
-**Buscar issues de manera inteligente:**
+VERIFICAR: ¿Se listaron issues agrupados por estado? [SI/NO]
+- IF NO → Ejecutar `list_issues` agrupando por estado
+- IF SI → Continuar
 
-#### Criterios de Búsqueda Recomendados
+Acciones:
+- Listar issues agrupados por estado
+- Identificar acumulaciones que indiquen cuellos de botella
+- Detectar issues en estados intermedios por períodos prolongados
 
-**1. Issues Listas para Comenzar:**
-- Estado: `"Backlog"` o `"Todo"`
-- Sin dependencias bloqueantes O dependencias completadas
-- Prioridad: Urgent, High, o Normal según contexto
-- Sin bloqueos evidentes
+### Paso 2: Mapear Dependencias
 
-**2. Issues Bloqueadores:**
-- Prioridad alta que bloquean a otros issues
-- Estado: `"Backlog"` o `"Todo"` (aún no iniciadas)
-- Críticas para el flujo del proyecto
+VERIFICAR: ¿Se construyó el grafo de dependencias? [SI/NO]
+- IF NO → Identificar issues padre, verificar relaciones de bloqueo, determinar dependencias satisfechas
+- IF SI → Continuar
 
-**3. Issues en Progreso que Necesitan Atención:**
-- Estado: `"In Progress"` por mucho tiempo
-- Podrían necesitar ayuda o revisión
+Acciones:
+- Identificar issues padre y sub-issues usando `parentId`
+- Verificar relaciones de bloqueo entre issues
+- Determinar cuáles issues tienen todas sus dependencias satisfechas
 
-**4. Issues en Revisión:**
-- Estado: `"In Review"` esperando aprobación
-- Podrían necesitar revisión urgente
+### Paso 3: Evaluar Prioridades
 
-#### Herramientas de Búsqueda
+Criterios de evaluación:
+- Prioridad asignada: Urgent (1), High (2), Normal (3), Low (4)
+- Impacto en bloqueo: Issues que bloquean a múltiples issues tienen mayor peso
+- Proximidad de deadline: Issues con fechas límite cercanas requieren atención inmediata
+- Criticidad para producción: Issues que afectan sistemas en producción tienen precedencia
 
-**Usa `list_issues` con múltiples filtros:**
+## Búsqueda y Filtrado Estratégico
 
-```python
-# Issues listas para comenzar
-list_issues(team: "DAW", state: "Todo", priority: 2)
+### Categorías de Búsqueda
 
-# Issues en Backlog con prioridad alta
-list_issues(team: "DAW", state: "Backlog", priority: 1)
+Categoría A: Issues Listas para Iniciar
+- Estado: "Backlog" o "Todo"
+- Dependencias: Sin dependencias bloqueantes o todas satisfechas
+- Prioridad: Urgent, High o Normal según contexto
+- Bloqueos: Sin impedimentos evidentes
 
-# Issues de un epic específico
-list_issues(team: "DAW", parentId: "ISSUE-EPIC-123")
+Categoría B: Issues Bloqueadoras
+- Característica: Bloquean el progreso de otros issues
+- Estado: "Backlog" o "Todo" (pendientes de inicio)
+- Impacto: Críticas para el flujo del proyecto
 
-# Issues por área (usando labels)
-list_issues(team: "DAW", state: "Todo", label: "frontend")
+Categoría C: Issues que Requieren Atención
+- Estado: "In Progress" por período prolongado
+- Indicador: Posible necesidad de asistencia o desbloqueo
+
+Categoría D: Issues en Revisión
+- Estado: "In Review"
+- Acción potencial: Acelerar ciclo de aprobación
+
+### Análisis Profundo de Issues Candidatas
+
+Para cada issue candidata:
+
+Paso 3.1: Obtener Información Completa
+- Herramienta: `get_issue` con parámetro `id`
+- Datos a revisar: título, descripción, estado, prioridad, labels, asignación, relaciones de dependencia
+
+Paso 3.2: Verificar Dependencias
+
+VERIFICAR: ¿Todas las dependencias están completadas? [SI/NO]
+- IF NO → NO recomendar, documentar dependencias pendientes
+- IF SI → Continuar
+
+Proceso:
+- IF issue tiene `parentId` → consultar estado del issue padre
+- IF descripción referencia dependencias → verificar estado de cada issue mencionado
+- Utilizar `list_issues` con `parentId` para obtener sub-issues relacionadas
+- Confirmar que dependencias críticas tienen estado "Done"
+
+Paso 3.3: Evaluar Viabilidad
+
+Lista de verificación:
+- [ ] Todas las dependencias están completadas
+- [ ] El issue tiene definición clara y criterios de aceptación
+- [ ] Existe información suficiente para iniciar el trabajo
+- [ ] No existen bloqueos externos identificados
+
+## Generación de Recomendaciones
+
+### Estructura de Recomendación Individual
+
+Para cada issue recomendada:
+
 ```
+## [ID-ISSUE]: [Título del Issue]
 
-**Usa `search_issues` para búsqueda por texto:**
+Prioridad Recomendada: [Alta/Media/Baja]
+Justificacion: [Explicación concisa del por qué esta issue es importante ahora]
 
-```python
-search_issues(query: "autenticación", team: "DAW")
-```
+Estado Actual: [Estado]
+Acción Sugerida: [Mover a Todo / Iniciar trabajo / Continuar trabajo / Revisar]
 
-### Paso 3: Análisis Profundo de Issues Candidatas
+Dependencias:
+- [COMPLETADA] [ID-DEP-1]: [Descripción breve]
+- [EN PROGRESO] [ID-DEP-2]: [Descripción breve] - Esperando completar
+- [PENDIENTE] [ID-DEP-3]: [Descripción breve] - Bloqueante
 
-**Para cada issue candidata:**
-
-1. **Obtener detalles completos**
-   - Usa: `get_issue` con `id` del issue
-   - Revisa: título, descripción, estado, prioridad, labels, asignado, dependencias
-
-2. **Verificar dependencias**
-   - Si el issue tiene `parentId`: verificar estado del issue padre
-   - Si la descripción menciona dependencias: verificar estado de issues dependientes
-   - Usa: `list_issues` con `parentId` para ver sub-issues
-   - Usa: `get_issue` para verificar estado de issues dependientes mencionados
-
-3. **Evaluar viabilidad**
-   - ¿Todas las dependencias están completadas? (`state: "Done"`)
-   - ¿El issue está claramente definido?
-   - ¿Hay información suficiente para comenzar?
-   - ¿Hay bloqueos evidentes?
-
-4. **Calcular prioridad estratégica**
-   - Prioridad del issue (Urgent=1, High=2, Normal=3, Low=4)
-   - ¿Bloquea a otros issues? (mayor prioridad)
-   - ¿Es crítico para producción? (mayor prioridad)
-   - ¿Tiene deadline próximo? (mayor prioridad)
-
-### Paso 4: Generar Recomendaciones Inteligentes
-
-**Crear recomendaciones estructuradas:**
-
-#### Estructura de Recomendación
-
-```markdown
-## ISSUE-123: [Título del Issue]
-
-**Prioridad Recomendada:** Alta/Media/Baja
-**Razón:** [Por qué esta issue es importante ahora]
-
-**Estado Actual:** Backlog/Todo/In Progress
-**Acción Sugerida:** Mover a Todo / Comenzar trabajo / Continuar trabajo
-
-**Dependencias:**
-- ✅ ISSUE-120 (Completada) - Diseño arquitectónico
-- ⏳ ISSUE-121 (In Progress) - Esperando completar
-
-**Contexto:**
+Contexto Adicional:
 - [Información relevante sobre el issue]
-- [Por qué es buen momento para hacerlo]
+- [Razón por la cual es buen momento para abordarlo]
 ```
 
-#### Criterios de Recomendación
+### Formato de Presentación
 
-**Recomendar Mover a "Todo" cuando (Alta Confianza 95%+):**
-- ✅ Todas las dependencias están completadas
-- ✅ Issue claramente definido con criterios de aceptación
-- ✅ Sin bloqueos evidentes
-- ✅ Prioridad alta o crítica
-- ✅ Información suficiente para comenzar
+```
+# Recomendaciones de Issues
 
-**NO recomendar mover a "Todo" cuando:**
-- ❌ Dependencias críticas no completadas
-- ❌ Issue con información insuficiente
-- ❌ Bloqueos evidentes sin resolver
-- ❌ Issue cancelado o duplicado
+## Resumen del Estado del Proyecto
 
-### Paso 5: Actualizar Status a "Todo" (Alta Confianza)
+| Métrica | Valor |
+|---------|-------|
+| Total de issues | [N] |
+| En Backlog | [N] |
+| En Todo | [N] |
+| In Progress | [N] |
+| In Review | [N] |
+| Done | [N] |
 
-**Solo actualizar cuando estés muy seguro (95%+ confianza):**
+## Issues Recomendadas (Prioridad Alta)
 
-#### Checklist Antes de Actualizar
+### 1. [ID-ISSUE]: [Título]
 
-- [ ] ¿He verificado todas las dependencias están "Done"?
-- [ ] ¿El issue está claramente definido?
-- [ ] ¿No hay bloqueos evidentes?
-- [ ] ¿La prioridad justifica moverlo ahora?
-- [ ] ¿El issue no está asignado a otra persona con trabajo activo?
+Prioridad: Alta
+Estado: Backlog -> Recomendado mover a Todo
+Justificación: [Explicación]
+Acción: [Estado de la acción: Movida a Todo / Pendiente de confirmación]
 
-#### Proceso de Actualización
+## Issues que Requieren Atención
 
-1. **Verificar estado actual**
-   - Usa: `get_issue` con `id` del issue
-   - Confirma que el estado actual es `"Backlog"` o similar
+### [ID-ISSUE]: [Título]
 
-2. **Verificar dependencias una última vez**
-   - Si tiene `parentId`: verificar estado del padre
-   - Si menciona dependencias en descripción: verificar cada una
-
-3. **Actualizar estado**
-   - Usa: `update_issue` con `id` del issue y `state: "Todo"`
-   - Solo si cumple todos los criterios de alta confianza
-
-4. **Documentar la acción**
-   - Usa: `create_comment` con `issueId` y mensaje profesional
-   - Incluye: razón de la actualización, contexto, recomendación
-   - **IMPORTANTE**: Siempre añade al final: `---\n_Hecho por Cursor_`
-
-### Paso 6: Presentar Recomendaciones al Usuario
-
-**Formato profesional de presentación:**
-
-```markdown
-# Recomendaciones de Issues para Trabajar
-
-## 📊 Resumen del Estado del Proyecto
-
-- **Total de issues:** 45
-- **En Backlog:** 12
-- **En Todo:** 8
-- **In Progress:** 5
-- **In Review:** 3
-- **Done:** 17
-
-## 🎯 Issues Recomendadas (Alta Prioridad)
-
-### 1. ISSUE-123: Implementar endpoint de autenticación
-**Prioridad:** Alta
-**Estado:** Backlog → **Recomendado mover a Todo**
-**Razón:** Todas las dependencias completadas, bloquea 2 issues críticas
-**Acción:** ✅ Movida a Todo
-
-## ⚠️ Issues que Requieren Atención
-
-### ISSUE-125: Refactorizar middleware
-**Estado:** In Progress (desde hace 5 días)
-**Razón:** Podría estar bloqueada o necesitar ayuda
-**Acción:** ⚠️ Revisar estado y ofrecer asistencia
+Estado: [Estado actual] (desde hace [N] días)
+Motivo de atención: [Explicación]
+Acción sugerida: [Recomendación]
 ```
 
-## Herramientas de Referencia
+## Actualización de Estado
 
-### Listar Issues
+### Procedimiento de Actualización
 
-**Herramienta:** `list_issues`
+Paso 5.1: Verificar Estado Actual
+- Herramienta: `get_issue` con `id` del issue
+- Confirmar: Estado actual es "Backlog" o equivalente
 
-**Parámetros útiles:**
-- `team`: Filtrar por equipo
-- `state`: Filtrar por estado (`"Backlog"`, `"Todo"`, `"In Progress"`, etc.)
-- `assignee`: Filtrar por asignado (usa `"me"` para tus issues)
-- `priority`: Filtrar por prioridad (1=Urgent, 2=High, 3=Normal, 4=Low)
-- `label`: Filtrar por label
-- `project`: Filtrar por proyecto - **⚠️ INTUYE el proyecto si el usuario no lo especifica**
-- `parentId`: Filtrar por issue padre (para obtener sub-issues)
+VERIFICAR: ¿El estado actual es "Backlog"? [SI/NO]
+- IF NO → NO actualizar, documentar razón
+- IF SI → Continuar
 
-### Buscar Issues
+Paso 5.2: Verificación Final de Dependencias
+- IF tiene `parentId` → verificar estado del padre es "Done" o no aplica
+- IF menciona dependencias en descripción → verificar cada una individualmente
 
-**Herramienta:** `search_issues` o `list_issues` con filtros
+VERIFICAR: ¿Todas las dependencias tienen estado "Done"? [SI/NO]
+- IF NO → NO actualizar, documentar dependencias pendientes
+- IF SI → Continuar
 
-**Parámetros:**
-- `query`: Texto de búsqueda
-- `team`: Filtrar por equipo
-- `timeMin`, `timeMax`: Fechas
+Paso 5.3: Ejecutar Actualización
 
-### Obtener Issue Detallado
+VERIFICAR: ¿Nivel de confianza ≥ 9/10? [SI/NO]
+- IF NO → NO actualizar, solo recomendar
+- IF SI → Continuar
 
-**Herramienta:** `get_issue`
+- Herramienta: `update_issue`
+- Parámetros: `id` del issue, `state: "Todo"`
+- Condición: Solo si se cumplen todos los criterios anteriores
 
-**Parámetros:**
+Paso 5.4: Documentar la Acción
+- Herramienta: `create_comment`
+- Parámetros: `issueId` y contenido del comentario
+
+Formato del comentario:
+```
+## Actualización de Estado
+
+Acción realizada: Issue movida a "Todo"
+
+Justificación:
+- [Razón principal de la actualización]
+- [Estado de dependencias verificado]
+
+Recomendación:
+- [Siguiente paso sugerido]
+
+---
+_Hecho por Cursor_
+```
+
+---
+
+# Referencia de Herramientas
+
+## Listar Issues
+
+Herramienta: `list_issues`
+
+Parámetros disponibles:
+- `team`: Nombre o ID del equipo
+- `state`: Estado del issue ("Backlog", "Todo", "In Progress", "In Review", "Done")
+- `assignee`: Usuario asignado (ID, nombre, email, o "me" para el usuario actual)
+- `priority`: Nivel de prioridad (1=Urgent, 2=High, 3=Normal, 4=Low)
+- `label`: Nombre o ID de la etiqueta
+- `project`: Nombre o ID del proyecto (inferir si no se especifica)
+- `parentId`: ID del issue padre para obtener sub-issues
+- `query`: Texto de búsqueda en título o descripción
+
+Ejemplos:
+```
+list_issues(team: "[EQUIPO]", state: "Todo", priority: 2)
+list_issues(team: "[EQUIPO]", state: "Backlog", priority: 1)
+list_issues(team: "[EQUIPO]", parentId: "[ID-EPIC]")
+list_issues(query: "[TERMINO-BUSQUEDA]", team: "[EQUIPO]")
+```
+
+## Obtener Issue Detallado
+
+Herramienta: `get_issue`
+
+Parámetros:
 - `id` (requerido): ID del issue
 
-**Retorna:** Información completa del issue incluyendo título, descripción, estado, prioridad, labels, asignado, parentId, dependencias, etc.
+Retorna: Información completa incluyendo título, descripción, estado, prioridad, labels, asignación, parentId, y relaciones de dependencia.
 
-### Actualizar Issue
+## Actualizar Issue
 
-**Herramienta:** `update_issue`
+Herramienta: `update_issue`
 
-**Parámetros útiles:**
-- `id` (requerido): ID del issue a actualizar
-- `state` (opcional): Nuevo estado (`"Todo"`, `"In Progress"`, etc.)
+Parámetros:
+- `id` (requerido): ID del issue
+- `state` (opcional): Nuevo estado
 - `priority` (opcional): Nueva prioridad
-- `assignee` (opcional): Nuevo asignado
+- `assignee` (opcional): Nueva asignación
 
-### Añadir Comentario
+## Crear Comentario
 
-**Herramienta:** `create_comment`
+Herramienta: `create_comment`
 
-**Parámetros:**
+Parámetros:
 - `issueId` (requerido): ID del issue
-- `body` (requerido): Contenido del comentario (soporta Markdown)
+- `body` (requerido): Contenido en formato Markdown
 
-**IMPORTANTE:** Siempre incluye al final: `---\n_Hecho por Cursor_`
+Recordatorio: Incluir siempre `---\n_Hecho por Cursor_` al final.
 
-### Listar Status Disponibles
+## Listar Estados Disponibles
 
-**Herramienta:** `list_issue_statuses`
+Herramienta: `list_issue_statuses`
 
-**Parámetros:**
+Parámetros:
 - `team` (requerido): Nombre o ID del equipo
 
-## Checklist de Profesionalismo
+## Listar Proyectos
 
-Antes de recomendar o mover un issue a "Todo", verifica:
+Herramienta: `list_projects`
 
-### Análisis
-- [ ] ¿He analizado el estado completo del proyecto?
-- [ ] ¿He identificado dependencias correctamente?
-- [ ] ¿He verificado el estado de todas las dependencias?
-- [ ] ¿He evaluado la prioridad estratégica?
+Usar para inferir proyecto cuando el usuario no lo especifica.
 
-### Recomendación
-- [ ] ¿El issue está claramente definido?
-- [ ] ¿Todas las dependencias están completadas?
-- [ ] ¿No hay bloqueos evidentes?
-- [ ] ¿He incluido razones claras en la recomendación?
+---
 
-### Actualización a "Todo"
-- [ ] ¿Tengo alta confianza (95%+) para mover a "Todo"?
-- [ ] ¿He verificado dependencias una última vez?
-- [ ] ¿He documentado la acción con un comentario?
-- [ ] ¿He incluido "_Hecho por Cursor_" en el comentario?
+# Checklist de Verificación Final
 
-## Consejos Finales
+## Antes de Recomendar
 
-1. **Analiza antes de recomendar** - No solo muestres issues, analízalas estratégicamente
-2. **Verifica dependencias siempre** - Nunca recomiendes issues con dependencias incompletas
-3. **Solo mueve a "Todo" con alta confianza** - Mejor ser conservador que mover issues incorrectamente
-4. **Documenta tus acciones** - Siempre comenta cuando muevas un issue
-5. **Prioriza bloqueadores** - Issues que bloquean a otros deben tener alta prioridad
-6. **Sé estratégico** - Actúa como project manager, no solo como buscador de issues
+VERIFICAR cada item:
+- [ ] Se analizó el estado completo del proyecto
+- [ ] Se identificaron dependencias correctamente
+- [ ] Se verificó el estado de todas las dependencias
+- [ ] Se evaluó la prioridad estratégica de cada issue
+
+## Antes de Actualizar Estado
+
+VERIFICAR cada item:
+- [ ] Nivel de confianza es 9 o superior en una escala del 1 al 10
+- [ ] Se verificaron dependencias una última vez
+- [ ] Todas las dependencias tienen estado "Done"
+- [ ] El issue tiene definición clara y completa
+- [ ] No existen bloqueos sin resolver
+- [ ] La prioridad justifica la actualización inmediata
+- [ ] Se documentará la acción con comentario apropiado
+- [ ] Se incluirá la firma "_Hecho por Cursor_" en el comentario
+
+## Manejo de Errores
+
+IF verificación falla en cualquier paso:
+- Documentar el motivo del fallo
+- NO proceder con actualización si confianza < 9/10
+- Solicitar clarificación si información es insuficiente
+- IF dependencias incompletas → listar dependencias pendientes y sus estados
+
+## Repetición de Pasos Críticos
+
+Recordatorio de pasos críticos:
+1. Verificar dependencias antes de recomendar
+2. Calcular confianza antes de actualizar (debe ser ≥ 9/10)
+3. Documentar todas las acciones con comentarios
+4. Incluir firma "_Hecho por Cursor_" en comentarios
