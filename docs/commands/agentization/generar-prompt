@@ -1,0 +1,181 @@
+Genera un prompt optimizado basado en técnicas empíricas con respaldo académico. El usuario proporcionará una petición específica y referenciará la guía empírica.
+
+## Proceso de Generación
+
+### PASO 1: Leer y Analizar la Guía Empírica
+
+VERIFICAR: ¿Se ha referenciado la guía empírica con @? [SI/NO]
+- IF NO → Solicitar al usuario que referencie la guía
+- IF SI → Continuar a PASO 2
+
+Lee completamente la guía empírica referenciada y extrae:
+- Técnicas con respaldo empírico fuerte (verificación explícita, posicionamiento estratégico, checklists, IF-THEN)
+- Técnicas condicionales (Chain-of-Thought, Few-shot, ReAct)
+- Anti-patrones a evitar (role prompting innecesario, énfasis excesivo, prompts largos)
+- Guía de aplicación por tipo de tarea
+
+### PASO 2: Analizar la Petición del Usuario
+
+VERIFICAR: ¿La petición está clara? [SI/NO]
+- IF NO → Solicitar aclaración
+- IF SI → Continuar a PASO 3
+
+Determina el tipo de tarea:
+- workflow: Procesos multi-paso con dependencias
+- razonamiento: Problemas matemáticos o lógicos
+- clasificacion: Categorización o clasificación
+- creativa: Contenido creativo o narrativo
+- agente: Agentes con herramientas
+
+### PASO 3: Seleccionar Técnicas Apropiadas
+
+VERIFICAR: ¿Se seleccionaron las técnicas correctas según el tipo de tarea? [SI/NO]
+- IF NO → Revisar guía y corregir
+- IF SI → Continuar a PASO 4
+
+Aplica estas reglas según el tipo de tarea:
+
+IF tipo_tarea == "workflow" THEN:
+  - Usar: Verificación explícita por paso, Heurísticas IF-THEN, Checklists estructurados, Posicionamiento estratégico
+  - Evitar: Chain-of-Thought, Role prompting innecesario, ReAct (para flujos fijos)
+
+IF tipo_tarea == "razonamiento" THEN:
+  - Usar: Chain-of-Thought, Self-Consistency, Few-shot con ejemplos similares
+  - Evitar: Heurísticas IF-THEN rígidas, Role prompting, Prompts muy largos
+
+IF tipo_tarea == "clasificacion" THEN:
+  - Usar: Heurísticas IF-THEN, Few-shot (2-3 ejemplos), Formato estructurado
+  - Evitar: Chain-of-Thought (puede perjudicar), Muchos ejemplos (>5), Instrucciones ambiguas
+
+IF tipo_tarea == "creativa" THEN:
+  - Usar: Role prompting (solo para tono), Contexto narrativo, Ejemplos de estilo
+  - Evitar: Checklists rígidos, Verificación por pasos, Formato IF-THEN
+
+IF tipo_tarea == "agente" THEN:
+  - Usar: Plan-and-Execute (flujos fijos), Verificación post-acción, Heurísticas IF-THEN
+  - Evitar: ReAct (para flujos fijos), Prompts muy largos, Confianza ciega en CoT
+
+### PASO 4: Estructurar el Prompt
+
+VERIFICAR: ¿El prompt sigue la estructura empírica? [SI/NO]
+- IF NO → Reestructurar según técnicas empíricas
+- IF SI → Continuar a PASO 5
+
+Estructura obligatoria (basada en "Lost in the Middle"):
+
+**INICIO (primeras 200 palabras):**
+- Objetivo principal (sin role prompting innecesario)
+- Pasos obligatorios (lista numerada, NO prosa)
+- Restricciones absolutas (lista estructurada)
+
+**MEDIO:**
+- Contexto necesario (conciso, sin redundancias)
+- Detalles técnicos si aplican
+- Ejemplos few-shot si aplican (máximo 2-3, bien seleccionados)
+
+**FINAL (últimas 100 palabras):**
+- Checklist de verificación estructurado
+- Repetición de pasos críticos
+- Manejo de errores
+
+### PASO 5: Aplicar Técnicas Específicas
+
+VERIFICAR: ¿Se aplicaron todas las técnicas apropiadas? [SI/NO]
+- IF NO → Revisar y aplicar técnicas faltantes
+- IF SI → Continuar a PASO 6
+
+**Para workflows (si aplica):**
+- Cada paso crítico debe tener: PASO X → VERIFICAR [SI/NO] → IF SI/NO → Continuar/Repetir
+- Usar formato IF-THEN para reglas de decisión
+- Checklists estructurados (Markdown, NO prosa natural)
+
+**Para razonamiento (si aplica):**
+- Incluir: "Resuelve paso a paso" y "Muestra tu razonamiento"
+- Solo si es problema matemático o lógico explícito
+- NO usar para workflows procedurales
+
+**Para clasificación (si aplica):**
+- Reglas IF-THEN claras para cada categoría
+- 2-3 ejemplos máximo, bien seleccionados
+- Formato estructurado para salida
+
+### PASO 6: Validar Anti-Patrones
+
+VERIFICAR: ¿Se eliminaron todos los anti-patrones? [SI/NO]
+- IF NO → Eliminar anti-patrones detectados
+- IF SI → Continuar a PASO 7
+
+Checklist de anti-patrones:
+- [ ] ¿Se eliminó role prompting innecesario? (solo usar para tono en tareas creativas)
+- [ ] ¿Se evitó énfasis tipográfico excesivo? (usar estructura/headers, NO negritas/MAYÚSCULAS)
+- [ ] ¿El prompt tiene <3000 tokens? (eliminar información redundante)
+- [ ] ¿Se usan listas estructuradas en lugar de prosa para requisitos?
+- [ ] ¿Los ejemplos few-shot son ≤3 y bien seleccionados?
+
+### PASO 7: Validar Estructura Final
+
+VERIFICAR: ¿El prompt cumple todos los criterios empíricos? [SI/NO]
+- IF NO → Revisar y corregir
+- IF SI → Continuar a PASO 8
+
+Checklist de validación:
+
+**ESTRUCTURA:**
+- [ ] Instrucciones críticas están al INICIO (primeras 200 palabras)
+- [ ] Hay checklist de verificación al FINAL (últimas 100 palabras)
+- [ ] El contenido del MEDIO es solo contexto/detalles
+
+**LONGITUD:**
+- [ ] El prompt tiene <3000 tokens estimados
+- [ ] Se eliminó información redundante
+- [ ] Cada oración aporta valor único
+
+**FORMATO:**
+- [ ] Se usan listas/checklists en lugar de prosa para requisitos
+- [ ] Se usa estructura (headers) en lugar de énfasis (negritas)
+- [ ] Las instrucciones condicionales usan formato IF-THEN (si aplica)
+
+**VERIFICACIÓN:**
+- [ ] Cada paso crítico tiene verificación explícita [SI/NO] (si es workflow)
+- [ ] Hay instrucciones claras para manejar fallos
+
+### PASO 8: Generar Prompt Final
+
+VERIFICAR: ¿El prompt está completo y optimizado? [SI/NO]
+- IF NO → Revisar desde PASO 4
+- IF SI → Finalizar
+
+Genera el prompt final aplicando:
+1. Posicionamiento estratégico (crítico al inicio y final)
+2. Técnicas apropiadas según tipo de tarea
+3. Estructura validada
+4. Anti-patrones eliminados
+
+Presenta el prompt generado con:
+- Título claro
+- Estructura completa
+- Nota sobre técnicas aplicadas
+- Referencia a evidencia empírica cuando sea relevante
+
+## Principios Fundamentales a Aplicar
+
+1. **Arquitectura sobre énfasis:** Posicionar instrucciones críticas al inicio y final del prompt
+2. **Verificación sobre confianza:** Forzar confirmación explícita [SI/NO] después de cada paso crítico
+3. **Concisión sobre exhaustividad:** 500 palabras bien estructuradas > 2000 palabras redundantes
+
+## Restricciones Absolutas
+
+- NO usar role prompting a menos que sea para tono en tareas creativas
+- NO usar énfasis tipográfico excesivo (negritas, MAYÚSCULAS) - usar estructura
+- NO generar prompts >3000 tokens
+- NO usar Chain-of-Thought para workflows procedurales
+- NO usar prosa natural para requisitos - usar listas estructuradas
+- NO incluir más de 3 ejemplos few-shot
+
+## Formato de Salida
+
+El prompt generado debe ser un archivo Markdown completo, listo para usar, que incluya:
+- YAML frontmatter opcional (title, version, date, tipo_tarea)
+- Estructura clara con headers
+- Contenido optimizado según técnicas empíricas
+- Checklist de verificación al final
